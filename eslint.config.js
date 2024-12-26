@@ -29,13 +29,12 @@ export default tseslint.config(
       "no-unused-vars": "warn",
       "prefer-const": "warn",
       "react/prop-types": "off",
-      "react/self-closing-comp": [
-        "error",
-        {
-          "component": true,
-          "html": true,
-        }
-      ]
+      "react/self-closing-comp": "error",
+      "react/jsx-sort-props": [true, {
+        callbacksLast: true,
+        shorthandFirst: 'first',
+        multiline: true,
+      }],
     },
   },
 );
