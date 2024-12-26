@@ -15,7 +15,7 @@ export default function AppLayout() {
           <UserProfile />
         </div>
 
-        <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-blue-900">
+        <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden">
           <Topbar />
 
           {/* DINAMIC CONTENT */}
