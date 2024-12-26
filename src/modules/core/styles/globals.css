@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+@layer utilities {
+  .text-display-xl {
+    font-size: 64px;
+    line-height: 88px;
+    letter-spacing: 1px;
+  }
+
+  .text-display-l {
+    font-size: 56px;
+    line-height: 72px;
+    letter-spacing: 1px;
+  }
+
+  .text-display-m {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 1px;
+  }
+
+  .text-display-s {
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: 1px;
+  }
+
+  .text-display-xs {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 1px;
+  }
+
+  .text-body-xl {
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 0.75px;
+  }
+
+  .text-body-l {
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.75px;
+  }
+
+  .text-body-m {
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+  }
+
+  .text-body-s {
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: 0.25px;
+  }
+}
