@@ -29,6 +29,13 @@ export default tseslint.config(
       "no-unused-vars": "warn",
       "prefer-const": "warn",
       "react/prop-types": "off",
+      "react/self-closing-comp": [
+        "error",
+        {
+          "component": true,
+          "html": true,
+        }
+      ]
     },
   },
 );

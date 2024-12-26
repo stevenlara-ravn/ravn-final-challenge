@@ -6,10 +6,10 @@ settings:
 
 dependencies:
   '@apollo/client':
-    specifier: ^3.7.8
+    specifier: ^3.12.4
     version: 3.12.4(@types/react@18.3.18)(graphql@16.10.0)(react-dom@18.3.1)(react@18.3.1)
   graphql:
-    specifier: ^16.6.0
+    specifier: ^16.10.0
     version: 16.10.0
   react:
     specifier: ^18.3.1
@@ -20,6 +20,12 @@ dependencies:
   react-router:
     specifier: ^7.1.1
     version: 7.1.1(react-dom@18.3.1)(react@18.3.1)
+  use-debounce:
+    specifier: ^10.0.4
+    version: 10.0.4(react@18.3.1)
+  uuid:
+    specifier: ^11.0.3
+    version: 11.0.3
   zod:
     specifier: ^3.24.1
     version: 3.24.1
@@ -2543,9 +2549,23 @@ packages:
       punycode: 2.3.1
     dev: true
 
+  /use-debounce@10.0.4(react@18.3.1):
+    resolution: {integrity: sha512-6Cf7Yr7Wk7Kdv77nnJMf6de4HuDE4dTxKij+RqE9rufDsI6zsbjyAxcH5y2ueJCQAnfgKbzXbZHYlkFwmBlWkw==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
+    dev: false
+
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /uuid@11.0.3:
+    resolution: {integrity: sha512-d0z310fCWv5dJwnX1Y/MncBAqGMKEzlBb1AOf7z9K8ALnd0utBX/msg/fA0+sbyN1ihbMsLhrBlnl1ak7Wa0rg==}
+    hasBin: true
+    dev: false
 
   /vite@6.0.6:
     resolution: {integrity: sha512-NSjmUuckPmDU18bHz7QZ+bTYhRR0iA72cs2QAxCqDpafJ0S6qetco0LB3WW2OxlMHS0JmAv+yZ/R3uPmMyGTjQ==}
