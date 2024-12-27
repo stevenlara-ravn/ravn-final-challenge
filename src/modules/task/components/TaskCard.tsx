@@ -16,7 +16,7 @@ export default function TaskCard() {
       </div>
 
       <div className="flex w-full items-center justify-between">
-        <p>3 Pts</p>
+        <p>3 Points</p>
         <TimerTag timeTag="Yesterday" />
       </div>
 
