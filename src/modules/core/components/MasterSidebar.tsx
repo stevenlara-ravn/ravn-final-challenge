@@ -10,7 +10,7 @@ const routes = [
 
 export default function MasterSidebar() {
   return (
-    <aside className="flex h-full w-[232px] flex-col items-center justify-start rounded-3xl bg-ravn-neutral-4 pt-3">
+    <aside className="flex h-full w-full max-w-[232px] flex-col items-center justify-start rounded-3xl bg-ravn-neutral-4 pt-3">
       <RavnLogo />
 
       <nav className="mt-[60px] flex w-full flex-col">
