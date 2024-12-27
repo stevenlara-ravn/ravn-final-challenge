@@ -7,7 +7,7 @@ import TaskCardAction from "@/task/components/TaskCardAction";
 
 export default function TaskCard() {
   return (
-    <article className="h-min-[208px] flex h-full w-[348px] flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
+    <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
       <div className="flex w-full items-center justify-between">
         <p>Twitter</p>
         <Button className="h-6 w-6">
