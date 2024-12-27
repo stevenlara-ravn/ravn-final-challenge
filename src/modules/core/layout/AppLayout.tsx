@@ -9,13 +9,13 @@ export default function AppLayout() {
     <main className="flex h-screen w-full items-center justify-between gap-8 bg-ravn-neutral-5 p-8">
       <MasterSidebar />
 
-      <section className="flex h-full w-full max-w-7xl flex-col items-center justify-between gap-8 overflow-hidden rounded-2xl">
+      <section className="flex h-full w-full max-w-[1108px] flex-col items-center justify-between gap-8 overflow-hidden rounded-2xl">
         <div className="relative flex h-16 w-full items-center justify-between rounded-2xl bg-ravn-neutral-4">
           <Searchbar />
           <UserProfile />
         </div>
 
-        <section className="flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden">
+        <section className="flex h-full w-full flex-col items-center justify-center gap-4">
           <Topbar />
 
           {/* DINAMIC CONTENT */}
