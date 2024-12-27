@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "SF Pro Display";
+  src:
+    local("SF Pro Display Regular"),
+    local("SFProDisplay-Regular"),
+    url("../../../assets/fonts/sf-pro-display-regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +25,7 @@
 }
 
 html {
-  font-family: "Roboto", sans-serif;
+  font-family: "SF Pro Display", sans-serif;
   font-weight: 400;
 }
 

@@ -32,6 +32,9 @@ module.exports = {
           '3': '#EBC77F',
           '4': '#E5B454',
         }
+      },
+      fontFamily: {
+        SFProDisplay: ["SF Pro Display", "sans-serif"],
       }
     },
   },
