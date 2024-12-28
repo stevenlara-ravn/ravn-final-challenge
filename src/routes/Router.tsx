@@ -8,8 +8,8 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="/my-tasks" element={<MyTasks />} />
+          <Route element={<Dashboard />} index />
+          <Route element={<MyTasks />} path="/my-tasks" />
         </Route>
       </Routes>
     </BrowserRouter>

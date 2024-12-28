@@ -30,7 +30,7 @@ export default function TaskCard() {
       </div>
 
       <div className="flex w-full items-center justify-between">
-        <Avatar></Avatar>
+        <Avatar />
 
         <TaskCardAction />
       </div>

@@ -7,10 +7,10 @@ export default function Searchbar() {
       <Search className="absolute left-6 h-6 w-6 text-ravn-neutral-2" />
       <input
         className="text-body-m h-full w-full rounded-2xl bg-ravn-neutral-4 py-5 pl-[72px] text-ravn-neutral-2 placeholder:text-ravn-neutral-2 focus:outline-none"
-        type="search"
         placeholder="Search"
+        type="search"
       />
-      <button type="reset" className="absolute right-6 h-6 w-6">
+      <button className="absolute right-6 h-6 w-6" type="reset">
         <XClose className="h-full w-full text-ravn-neutral-2" />
       </button>
     </form>

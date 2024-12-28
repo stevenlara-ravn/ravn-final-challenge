@@ -25,10 +25,10 @@ export default function TaskTable() {
 
         <div className="flex h-6 w-14 items-center justify-center gap-2">
           <button className="h-6 w-6">
-            <PlusSign className="h-[14px] w-[14px] text-ravn-neutral-2"></PlusSign>
+            <PlusSign className="h-[14px] w-[14px] text-ravn-neutral-2" />
           </button>
           <button className="h-6 w-6">
-            <MoreIcon className="h-1 w-[18px] text-ravn-neutral-2"></MoreIcon>
+            <MoreIcon className="h-1 w-[18px] text-ravn-neutral-2" />
           </button>
         </div>
       </div>
