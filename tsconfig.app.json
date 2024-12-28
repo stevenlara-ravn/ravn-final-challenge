@@ -11,14 +11,8 @@
       "@/task/*": [
         "src/modules/task/*"
       ],
-      "@/routes/*": [
-        "src/routes/*"
-      ],
-      "@/pages/*": [
-        "src/pages/*"
-      ],
-      "@/types/*": [
-        "src/types/*"
+      "@/*": [
+        "src/*"
       ]
     },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
