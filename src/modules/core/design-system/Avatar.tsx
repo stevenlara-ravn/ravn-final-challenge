@@ -1,3 +1,7 @@
-export default function Avatar() {
-  return <img className="h-10 w-10 rounded-full bg-blue-200" />;
+export default function Avatar(props: React.PropsWithChildren<any>) {
+  return (
+    <img
+      className={`min-h-8 min-w-8 rounded-full bg-blue-200 ${props.className}`}
+    />
+  );
 }

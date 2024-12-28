@@ -1,5 +1,5 @@
 export type SidebarTabProps = {
-    icon: React.ReactNode;
-    label: string;
-    url: string;
+  icon: React.ReactNode;
+  label: string;
+  url: string;
 };
