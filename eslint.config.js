@@ -6,7 +6,6 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { extends: "prettier" },
   { ignores: ["dist"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
@@ -35,11 +34,7 @@ export default tseslint.config(
         component: true,
         html: true,
       }],
-      "react/jsx-sort-props": [true, {
-        callbacksLast: true,
-        shorthandFirst: 'first',
-        multiline: true,
-      }],
+      "react/jsx-sort-props": "error",
     },
   },
 );
