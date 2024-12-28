@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "prettier": "prettier --write .",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "prestart": "pnpm run codegen",
+    "predev": "pnpm run codegen"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
@@ -30,6 +32,8 @@
     "@eslint/js": "^9.17.0",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/client-preset": "4.5.1",
+    "@graphql-codegen/typescript": "^4.1.2",
+    "@graphql-codegen/typescript-operations": "^4.4.0",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
