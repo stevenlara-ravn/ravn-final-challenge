@@ -1,5 +1,5 @@
+import TaskCard from "@/components/task/TaskCard";
 import { InputMaybe, Status, useGetTasksQuery } from "@/gql/graphql";
-import TaskCard from "@/task/components/TaskCard";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 
 export default function TaskColumn({ status }: { status: InputMaybe<Status> }) {

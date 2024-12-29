@@ -1,7 +1,7 @@
-import MasterSidebar from "@/core/components/MasterSidebar";
-import Searchbar from "@/core/components/Searchbar";
-import UserProfile from "@/core/components/UserProfile";
-import Topbar from "@/task/components/Topbar";
+import MasterSidebar from "@/components/core/MasterSidebar";
+import Searchbar from "@/components/core/Searchbar";
+import UserProfile from "@/components/core/UserProfile";
+import Topbar from "@/components/task/Topbar";
 import { Outlet } from "react-router";
 
 export default function AppLayout() {

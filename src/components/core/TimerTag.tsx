@@ -1,6 +1,6 @@
 import Timer from "@/assets/icons/timer.svg?react";
-import { timerTagColors } from "@/core/constants/tag-colors";
-import { TimerTagProps } from "@/core/types/Tag";
+import { timerTagColors } from "@/constants/tag-colors";
+import { TimerTagProps } from "@/types/Tag";
 
 const timeTagColor = (timeTag: TimerTagProps["timeTag"]) => timerTagColors[timeTag] ?? "text-ravn-neutral-1 bg-ravn-neutral-2/10";
 

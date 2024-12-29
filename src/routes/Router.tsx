@@ -1,4 +1,4 @@
-import AppLayout from "@/core/layout/AppLayout";
+import AppLayout from "@/layout/AppLayout";
 import Dashboard from "@/pages/Dashboard";
 import MyTasks from "@/pages/MyTasks";
 import { BrowserRouter, Route, Routes } from "react-router";

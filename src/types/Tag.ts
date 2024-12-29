@@ -1,5 +1,5 @@
+import { timerTagColors } from "@/constants/tag-colors";
 import { TaskTag } from "@/gql/graphql";
-import { timerTagColors } from "../constants/tag-colors";
 
 export interface TagProps {
     label: `${TaskTag}`;

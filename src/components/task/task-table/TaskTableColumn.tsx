@@ -2,8 +2,7 @@ import CommentICon from "@/assets/icons/comment.svg?react";
 import DragIcon from "@/assets/icons/drag-icon.svg?react";
 import RightArrowIcon from "@/assets/icons/right-arrow.svg?react";
 import SubtasksIcon from "@/assets/icons/subtasks.svg?react";
-import Avatar from "@/core/design-system/Avatar";
-import Tag from "@/core/design-system/Tag";
+import Avatar from "@/components/core/design-system/Avatar";
 
 export default function TaskTableColumn() {
   return (
@@ -41,10 +40,10 @@ export default function TaskTableColumn() {
 
       <div className="flex h-full w-full min-w-[168px] items-center justify-center overflow-hidden border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-2">
         <div className="flex items-center justify-center gap-2">
-          <Tag className="bg-ravn-secondary-4/10 text-ravn-secondary-4">
+          {/* <Tag className="bg-ravn-secondary-4/10 text-ravn-secondary-4">
             ios app
           </Tag>
-          <Tag className="w-[52px] bg-ravn-neutral-2/10">+2</Tag>
+          <Tag className="w-[52px] bg-ravn-neutral-2/10">+2</Tag> */}
         </div>
       </div>
 

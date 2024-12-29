@@ -1,4 +1,4 @@
-import TaskGridSection from "@/task/components/TaskGridSection";
+import TaskGridSection from "@/components/task/TaskGridSection";
 
 export default function Dashboard() {
   return <TaskGridSection />;

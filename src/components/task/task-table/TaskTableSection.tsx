@@ -1,5 +1,5 @@
-import TableFilterHeader from "@/core/components/TableFilterHeader";
-import TaskTable from "@/task/components/task-table/TaskTable";
+import TableFilterHeader from "@/components/core/TableFilterHeader";
+import TaskTable from "@/components/task/task-table/TaskTable";
 
 export default function TaskTableSection() {
   return (

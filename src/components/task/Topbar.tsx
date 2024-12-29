@@ -1,5 +1,5 @@
-import CreateButton from "@/core/design-system/CreateButton";
-import SwitchButton from "@/core/design-system/SwitchButton";
+import CreateButton from "@/components/core/design-system/CreateButton";
+import SwitchButton from "@/components/core/design-system/SwitchButton";
 
 export default function Topbar() {
   return (

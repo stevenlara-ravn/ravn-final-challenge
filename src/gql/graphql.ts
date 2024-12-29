@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as Apollo from "@apollo/client";
 import { gql } from "@apollo/client";
 export type Maybe<T> = T | null;

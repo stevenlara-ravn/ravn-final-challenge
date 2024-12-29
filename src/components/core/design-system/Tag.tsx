@@ -1,5 +1,5 @@
-import { deviceTagColors } from "@/core/constants/tag-colors";
-import { TagProps } from "@/core/types/Tag";
+import { deviceTagColors } from "@/constants/tag-colors";
+import { TagProps } from "@/types/Tag";
 import { normalizeText } from "@/utils/text-transform";
 
 export default function Tag({ label }: TagProps) {

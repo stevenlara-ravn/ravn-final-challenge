@@ -2,15 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/assets/*": [
-        "src/assets/*"
-      ],
-      "@/core/*": [
-        "src/modules/core/*"
-      ],
-      "@/task/*": [
-        "src/modules/task/*"
-      ],
       "@/*": [
         "src/*"
       ]

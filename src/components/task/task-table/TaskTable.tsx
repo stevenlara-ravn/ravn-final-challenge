@@ -1,7 +1,7 @@
 import DownArrowIcon from "@/assets/icons/down-arrow.svg?react";
 import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
-import TaskTableColumn from "@/task/components/task-table/TaskTableColumn";
+import TaskTableColumn from "@/components/task/task-table/TaskTableColumn";
 import {
   Disclosure,
   DisclosureButton,
