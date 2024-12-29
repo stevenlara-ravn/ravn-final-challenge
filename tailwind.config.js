@@ -29,6 +29,7 @@ module.exports = {
           3: "#EBC77F",
           4: "#E5B454",
         },
+        "ravn-blue-1": "#2F61BF"
       },
       fontFamily: {
         SFProDisplay: ["SF Pro Display", "sans-serif"],
