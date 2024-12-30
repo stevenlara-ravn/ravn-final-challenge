@@ -1,4 +1,3 @@
-
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
@@ -13,8 +12,7 @@ const config: CodegenConfig = {
         "typescript-react-apollo",
       ],
     },
-  }
-  ,
+  },
   ignoreNoDocuments: true,
 };
 
