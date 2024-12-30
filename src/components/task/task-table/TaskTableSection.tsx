@@ -17,7 +17,7 @@ export default function TaskTableSection() {
     <main className="flex h-full w-full flex-col items-start justify-start gap-4">
       <TableHeader />
 
-      <div className="flex h-full w-full flex-col items-start justify-start gap-4 overflow-y-auto">
+      <div className="flex h-full w-full flex-col items-start justify-start gap-4 overflow-y-auto no-scrollbar">
         <div>
           {STATUS.map((status) => (
             <TaskTable key={status} status={status} />

@@ -15,7 +15,7 @@ export default function TaskColumn({ status }: { status: InputMaybe<Status> }) {
         {normalizeText(status as string)} ({zeroPad(data?.tasks.length ?? 0)})
       </p>
 
-      <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-4">
+      <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-4 no-scrollbar">
         {data?.tasks.map((task) => <TaskCard key={task.id} task={task} />)}
       </div>
     </section>

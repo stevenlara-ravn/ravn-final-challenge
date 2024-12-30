@@ -167,6 +167,9 @@ module.exports = {
           "letterSpacing": "0.25px",
           "fontWeight": "600",
           "fontFamily": "\"SF Pro Display\", sans-serif"
+        },
+        ".no-scrollbar::-webkit-scrollbar": {
+          "display": "none"
         }
       });
     }

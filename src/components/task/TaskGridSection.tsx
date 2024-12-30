@@ -13,7 +13,7 @@ export default function TaskGridSection() {
   const STATUS = [...new Set(data?.tasks.map((task) => task.status))];
 
   return (
-    <main className="flex h-full w-full items-start justify-between gap-8 overflow-x-auto">
+    <main className="flex h-full w-full items-start justify-between gap-8 overflow-x-auto no-scrollbar">
       {STATUS.map((status) => (
         <TaskColumn key={status} status={status} />
       ))}
