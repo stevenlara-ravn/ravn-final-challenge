@@ -10,17 +10,13 @@ export default function TaskColumn({ status }: { status: InputMaybe<Status> }) {
   });
 
   return (
-    <section className="flex h-[700px] w-full min-w-[348px] flex-col items-center justify-start gap-4 overflow-hidden rounded-lg">
-      <p className="text-body-l h-8 w-full font-semibold text-ravn-neutral-1 capitalize">
+    <section className="flex h-full w-full min-w-[348px] flex-col items-center justify-start gap-4 overflow-hidden rounded-lg">
+      <p className="h-8 w-full capitalize text-ravn-neutral-1 text-body-l-bold">
         {normalizeText(status as string)} ({zeroPad(data?.tasks.length ?? 0)})
       </p>
 
       <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-4">
-        {
-          data?.tasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
-          ))
-        }
+        {data?.tasks.map((task) => <TaskCard key={task.id} task={task} />)}
       </div>
     </section>
   );

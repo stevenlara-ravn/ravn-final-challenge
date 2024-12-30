@@ -5,8 +5,10 @@ import { normalizeText } from "@/utils/text-transform";
 
 export default function TechTag(props: TechTagProps) {
   return (
-    <Tag className={`${deviceTagColors[props.label]} ${props.className}`} >
-      <p className="text-body-m-bold text-center uppercase">{normalizeText(props.label)}</p>
+    <Tag className={`${deviceTagColors[props.label]} ${props.className}`}>
+      <p className="text-center uppercase text-body-m-bold">
+        {normalizeText(props.label)}
+      </p>
     </Tag>
   );
 }

@@ -6,7 +6,7 @@ export default function Searchbar() {
     <form className="relative flex h-full w-full items-center justify-between">
       <SearchIcon className="absolute left-6 h-6 w-6 text-ravn-neutral-2" />
       <input
-        className="text-body-m-regular h-full w-full rounded-2xl bg-ravn-neutral-4 py-5 pl-[72px] text-ravn-neutral-2 placeholder:text-ravn-neutral-2 focus:outline-none"
+        className="h-full w-full rounded-2xl bg-ravn-neutral-4 py-5 pl-[72px] text-ravn-neutral-2 text-body-m-regular placeholder:text-ravn-neutral-2 focus:outline-none"
         placeholder="Search"
         type="search"
       />

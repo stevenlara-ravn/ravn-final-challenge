@@ -1,6 +1,6 @@
 export default function TableHeader() {
   return (
-    <header className="flex h-14 w-full items-center justify-between rounded border-y border-ravn-neutral-3 bg-ravn-neutral-4 text-ravn-neutral-1 overflow-hidden">
+    <header className="flex h-14 w-full items-center justify-between overflow-hidden rounded border-y border-ravn-neutral-3 bg-ravn-neutral-4 text-ravn-neutral-1">
       <div className="flex h-full w-full min-w-[460px] items-center justify-start rounded-bl rounded-tl border-x border-ravn-neutral-3 px-4 py-1">
         <p className="text-body-m-regular"># Task Name</p>
       </div>

@@ -1,12 +1,9 @@
 import { ReactProps } from "@/types/ReactProps";
 
-export default function Avatar(
-  {
-    url = "https://i.pravatar.cc/32",
-    ...props
-  }:
-    ReactProps & { url?: string }
-) {
+export default function Avatar({
+  url = "https://i.pravatar.cc/32",
+  ...props
+}: ReactProps & { url?: string }) {
   return (
     <img
       alt="Avatar"

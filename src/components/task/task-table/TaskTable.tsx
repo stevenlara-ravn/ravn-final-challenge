@@ -19,12 +19,14 @@ export default function TaskTable({ status }: { status: Status }) {
 
   return (
     <Disclosure defaultOpen>
-      <div className="flex w-full items-center justify-between gap-10 rounded-t border border-ravn-neutral-3 bg-ravn-neutral-4 px-4 py-1 h-14 group">
+      <div className="group flex h-14 w-full items-center justify-between gap-10 rounded-t border border-ravn-neutral-3 bg-ravn-neutral-4 px-4 py-1">
         <DisclosureButton className="flex w-full min-w-[200px] items-center justify-start gap-3 py-2">
           <DownArrowIcon className="h-[6px] w-3 text-ravn-neutral-2" />
-          <p className="text-body-l-bold font-semibold text-ravn-neutral-1 capitalize">
+          <p className="font-semibold capitalize text-ravn-neutral-1 text-body-l-bold">
             {normalizeText(status)}
-            <span className="text-ravn-ravn-bg-ravn-neutral-2 pl-2">({zeroPad(data?.tasks?.length ?? 0)})</span>
+            <span className="text-ravn-ravn-bg-ravn-neutral-2 pl-2">
+              ({zeroPad(data?.tasks?.length ?? 0)})
+            </span>
           </p>
         </DisclosureButton>
 
@@ -38,12 +40,10 @@ export default function TaskTable({ status }: { status: Status }) {
         </div>
       </div>
 
-      <DisclosurePanel className="-mt-4 flex w-full flex-col items-center justify-center bg-ravn-neutral-4 text-ravn-neutral-1 min-h-14">
-        {
-          data?.tasks?.map((task) => (
-            <TaskTableColumn key={task.id} task={task} />
-          ))
-        }
+      <DisclosurePanel className="flex h-max min-h-14 w-full flex-col items-center justify-center overflow-hidden bg-ravn-neutral-4 text-ravn-neutral-1">
+        {data?.tasks?.map((task) => (
+          <TaskTableColumn key={task.id} task={task} />
+        ))}
       </DisclosurePanel>
     </Disclosure>
   );

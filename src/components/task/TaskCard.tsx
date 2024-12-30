@@ -12,27 +12,27 @@ export default function TaskCard({ task }: TaskCardProps) {
   return (
     <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
       <div className="flex w-full items-center justify-between">
-        <p className="text-body-l-bold text-ravn-neutral-1">{task.name}</p>
+        <p className="text-ravn-neutral-1 text-body-l-bold">{task.name}</p>
         <Button className="h-6 w-6">
           <MoreIcon className="text-ravn-neutral-2" />
         </Button>
       </div>
 
       <div className="flex w-full items-center justify-between">
-        <p className="text-body-m-bold">{POINTS_ESTIMATE[task.pointEstimate]} Points</p>
+        <p className="text-body-m-bold">
+          {POINTS_ESTIMATE[task.pointEstimate]} Points
+        </p>
         <TimerTag timeTag={formatDate(task.dueDate)} />
       </div>
 
       <div className="flex w-full items-center justify-start gap-2">
-        {
-          task.tags.map((tag) => (
-            <TechTag key={tag} label={tag} />
-          ))
-        }
+        {task.tags.map((tag) => (
+          <TechTag key={tag} label={tag} />
+        ))}
       </div>
 
       <div className="flex w-full items-center justify-between">
-        <Avatar className="w-8 h-8" url={task.creator?.avatar ?? undefined} />
+        <Avatar className="h-8 w-8" url={task.creator?.avatar ?? undefined} />
 
         <TaskCardAction />
       </div>

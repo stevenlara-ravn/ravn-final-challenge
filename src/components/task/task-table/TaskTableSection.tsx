@@ -17,11 +17,13 @@ export default function TaskTableSection() {
     <main className="flex h-full w-full flex-col items-start justify-start gap-4">
       <TableHeader />
 
-      {
-        STATUS.map((status) => (
-          <TaskTable key={status} status={status} />
-        ))
-      }
+      <div className="flex h-full w-full flex-col items-start justify-start gap-4 overflow-y-auto">
+        <div>
+          {STATUS.map((status) => (
+            <TaskTable key={status} status={status} />
+          ))}
+        </div>
+      </div>
     </main>
   );
 }
