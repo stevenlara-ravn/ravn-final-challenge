@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import importPlugin from "eslint-plugin-import";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -17,7 +18,8 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      "react": react
+      "react": react,
+      "import": importPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -35,6 +37,11 @@ export default tseslint.config(
         html: true,
       }],
       "react/jsx-sort-props": "error",
+      "no-multi-spaces": "error",
+      "no-multiple-empty-lines": ["error", {
+        max: 1,
+      }],
+      "import/newline-after-import": ["error", { count: 1 }],
     },
   },
 );
