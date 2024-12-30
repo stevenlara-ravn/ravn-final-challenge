@@ -13,7 +13,7 @@ export default function SidebarTab({ icon, label, url }: SidebarTabProps) {
       to={url}
     >
       {icon}
-      <p className="text-body-m font-semibold uppercase">{label}</p>
+      <p className="text-body-m-bold uppercase">{label}</p>
     </NavLink>
   );
 }

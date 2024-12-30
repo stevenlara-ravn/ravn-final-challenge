@@ -9,11 +9,11 @@ export default function TaskCardAction() {
         <ClipIcon />
       </button>
       <div className="flex h-6 min-w-[29px] items-center justify-center gap-1">
-        <p className="text-body-m font-normal">3</p>
+        <p className="text-body-m-regular">3</p>
         <SubtasksIcon />
       </div>
       <div className="flex h-6 min-w-[29px] items-center justify-center gap-1">
-        <p className="text-body-m font-normal">3</p>
+        <p className="text-body-m-regular">3</p>
         <CommentIcon />
       </div>
     </section>

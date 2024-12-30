@@ -7,7 +7,7 @@ export default function Tag({ label }: TagProps) {
     <div
       className={`overflox-hidden flex h-8 min-w-12 items-center justify-center rounded px-4 py-1 ${deviceTagColors[label]}`}
     >
-      <p className="text-body-m text-center font-semibold uppercase">{normalizeText(label)}</p>
+      <p className="text-body-m-bold text-center uppercase">{normalizeText(label)}</p>
     </div>
   );
 }

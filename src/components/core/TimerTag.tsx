@@ -11,7 +11,7 @@ export default function TimerTag({ timeTag }: TimerTagProps) {
         ${timeTagColor(timeTag)}`}
     >
       <Timer className={`h-5 w-5 ${timeTagColor(timeTag)}`} />
-      <p className="uppercase">{timeTag}</p>
+      <p className="uppercase text-body-m-bold">{timeTag}</p>
     </div>
   );
 }
