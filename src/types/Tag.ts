@@ -3,8 +3,8 @@ import { TaskTag } from "@/gql/graphql";
 import { ReactProps } from "./ReactProps";
 
 export interface TechTagProps extends ReactProps {
-    label: `${TaskTag}` | `+${number}`;
-};
+  label: `${TaskTag}` | `+${number}`;
+}
 export interface TimerTagProps {
-    timeTag: keyof typeof timerTagColors | string;
-};
+  timeTag: keyof typeof timerTagColors | string;
+}

@@ -3,7 +3,11 @@ export const formatDate = (date: string) => {
   const now = new Date();
 
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const targetDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate());
+  const targetDate = new Date(
+    dateObject.getFullYear(),
+    dateObject.getMonth(),
+    dateObject.getDate(),
+  );
 
   const oneDayInMs = 1000 * 60 * 60 * 24;
 
