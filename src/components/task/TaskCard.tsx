@@ -1,7 +1,7 @@
 import MoreIcon from "@/assets/icons/more.svg?react";
 import Avatar from "@/components/core/design-system/Avatar";
 import Button from "@/components/core/design-system/Button";
-import Tag from "@/components/core/design-system/Tag";
+import TechTag from "@/components/core/TechTag";
 import TimerTag from "@/components/core/TimerTag";
 import TaskCardAction from "@/components/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
@@ -26,7 +26,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       <div className="flex w-full items-center justify-start gap-2">
         {
           task.tags.map((tag) => (
-            <Tag key={tag} label={tag} />
+            <TechTag key={tag} label={tag} />
           ))
         }
       </div>
