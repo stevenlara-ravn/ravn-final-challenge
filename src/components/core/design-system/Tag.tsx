@@ -1,13 +1,11 @@
-import { deviceTagColors } from "@/constants/tag-colors";
-import { TagProps } from "@/types/Tag";
-import { normalizeText } from "@/utils/text-transform";
+import { ReactProps } from "@/types/ReactProps";
 
-export default function Tag({ label }: TagProps) {
+export default function Tag(props: ReactProps) {
   return (
     <div
-      className={`overflox-hidden flex h-8 min-w-12 items-center justify-center rounded px-4 py-1 ${deviceTagColors[label]}`}
+      className={`overflow-hidden flex h-8 min-w-12 items-center justify-center rounded px-4 py-1 ${props.className}`}
     >
-      <p className="text-body-m-bold text-center uppercase">{normalizeText(label)}</p>
+      {props.children}
     </div>
   );
 }
