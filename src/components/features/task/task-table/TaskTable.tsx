@@ -1,5 +1,5 @@
-import TaskTableHeader from "@/components/features/core/TableHeader";
 import TaskTableAccordion from "@/components/features/task/task-table/TaskTableAccordion";
+import TaskTableHeader from "@/components/features/task/task-table/TaskTableHeader";
 import { useGetTasksStatusQuery } from "@/gql/graphql";
 
 export default function TaskTable() {
@@ -17,8 +17,8 @@ export default function TaskTable() {
     <main className="flex h-full w-full flex-col items-start justify-start gap-4">
       <TaskTableHeader />
 
-      <div className="flex h-full w-full flex-col items-start justify-start gap-4 overflow-y-auto no-scrollbar">
-        <div>
+      <div className="flex h-full w-full flex-col items-start justify-start gap-4 overflow-auto no-scrollbar">
+        <div className="flex w-full flex-col items-start justify-start gap-4 pb-6">
           {STATUS.map((status) => (
             <TaskTableAccordion key={status} status={status} />
           ))}

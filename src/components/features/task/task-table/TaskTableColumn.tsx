@@ -10,7 +10,7 @@ import { zeroPad } from "@/utils/text-transform";
 
 export default function TaskTableColumn({ task }: { task: Task }) {
   return (
-    <div className="flex min-h-14 w-full items-center justify-between overflow-hidden">
+    <li className="flex min-h-14 w-full items-center justify-between">
       <div className="group relative flex h-full w-full min-w-[460px] items-center justify-between gap-2 overflow-hidden border-x border-b border-ravn-neutral-3 px-4 py-1">
         <span className="absolute left-0 h-[80%] w-1 bg-white" />
         <span className="flex h-6 w-6 items-center justify-center">
@@ -75,6 +75,6 @@ export default function TaskTableColumn({ task }: { task: Task }) {
       <div className="flex h-full w-full min-w-[141px] items-center justify-start border-b border-r border-ravn-neutral-3 px-4 py-1">
         <p className="text-body-m-regular">6 July, 2020</p>
       </div>
-    </div>
+    </li>
   );
 }
