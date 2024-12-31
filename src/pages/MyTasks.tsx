@@ -1,5 +1,5 @@
-import TaskTableSection from "@/components/task/task-table/TaskTableSection";
+import TaskTable from "@/components/task/task-table/TaskTable";
 
 export default function MyTasks() {
-  return <TaskTableSection />;
+  return <TaskTable />;
 }
