@@ -1,5 +1,10 @@
-import { SidebarTabProps } from "@/types/MasterSidebar";
 import { NavLink } from "react-router";
+
+interface SidebarTabProps {
+  icon: React.ReactNode;
+  label: string;
+  url: string;
+}
 
 export default function SidebarTab({ icon, label, url }: SidebarTabProps) {
   return (

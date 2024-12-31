@@ -1,9 +1,13 @@
-import { ReactProps } from "@/types/ReactProps";
+import ReactProps from "@/types/ReactProps";
+
+interface AvatarProps extends ReactProps {
+  url?: string;
+}
 
 export default function Avatar({
   url = "https://i.pravatar.cc/32",
   ...props
-}: ReactProps & { url?: string }) {
+}: AvatarProps) {
   return (
     <img
       alt="Avatar"

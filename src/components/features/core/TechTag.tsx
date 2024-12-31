@@ -1,7 +1,12 @@
 import Tag from "@/components/features/core/design-system/Tag";
 import { deviceTagColors } from "@/constants/tag-colors";
-import { TechTagProps } from "@/types/Tag";
+import { TaskTag } from "@/gql/graphql";
+import ReactProps from "@/types/ReactProps";
 import { normalizeText } from "@/utils/text-transform";
+
+interface TechTagProps extends ReactProps {
+  label: `${TaskTag}` | `+${number}`;
+}
 
 export default function TechTag(props: TechTagProps) {
   return (

@@ -1,4 +1,4 @@
-import { ReactProps } from "@/types/ReactProps";
+import ReactProps from "@/types/ReactProps";
 
 export default function Tag(props: ReactProps) {
   return (

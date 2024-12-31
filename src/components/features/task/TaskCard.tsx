@@ -5,8 +5,12 @@ import TechTag from "@/components/features/core/TechTag";
 import TimerTag from "@/components/features/core/TimerTag";
 import TaskCardAction from "@/components/features/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
+import { Task } from "@/gql/graphql";
 import { formatDate } from "@/lib/date";
-import { TaskCardProps } from "@/types/TaskCard";
+
+interface TaskCardProps {
+  task: Task;
+}
 
 export default function TaskCard({ task }: TaskCardProps) {
   return (
