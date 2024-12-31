@@ -1,3 +1,4 @@
+import eslintReact from "@eslint-react/eslint-plugin";
 import js from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
 import eslintPluginPrettier from "eslint-plugin-prettier";
@@ -10,7 +11,7 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   { ignores: ["dist"] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, eslintReact.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
@@ -45,6 +46,8 @@ export default tseslint.config(
       }],
       "import/newline-after-import": ["error", { count: 1 }],
       "prettier/prettier": "error",
+      "@eslint-react/naming-convention/component-name": ["error"],
+      "@eslint-react/naming-convention/filename": ["error"],
     },
   },
 );
