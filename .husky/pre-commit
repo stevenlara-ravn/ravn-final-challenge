@@ -1,2 +1,5 @@
-echo "pnpm build" >> .husky/pre-commit
-chmod +x .husky/pre-commit
+echo "Checking for TypeScript errors..."
+tsc -b
+
+echo "Checking for ESLint errors..."
+pnpm lint --fix
