@@ -1,5 +1,5 @@
 import RavnLogo from "@/assets/icons/logomark.svg?react";
-import Navigation from "@/components/core/Navigation";
+import Navigation from "@/components/features/core/Navigation";
 
 export default function MasterSidebar() {
   return (

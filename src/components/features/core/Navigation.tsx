@@ -1,10 +1,10 @@
 import ColumnsIcon from "@/assets/icons/master-sidebar/columns.svg?react";
 import GridIcon from "@/assets/icons/master-sidebar/grid.svg?react";
-import SidebarTab from "@/components/core/design-system/SidebarTab";
+import SidebarTab from "@/components/features/core/design-system/SidebarTab";
 
 const routes = [
   { icon: <GridIcon />, label: "Dashboard", url: "/" },
-  { icon: <ColumnsIcon />, label: "Tasks", url: "/my-tasks" },
+  { icon: <ColumnsIcon />, label: "My Tasks", url: "/my-tasks" },
 ];
 
 export default function Navigation() {

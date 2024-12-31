@@ -2,8 +2,8 @@ import CommentIcon from "@/assets/icons/comment.svg?react";
 import DragIcon from "@/assets/icons/drag-icon.svg?react";
 import RightArrowIcon from "@/assets/icons/right-arrow.svg?react";
 import SubtasksIcon from "@/assets/icons/subtasks.svg?react";
-import Avatar from "@/components/core/design-system/Avatar";
-import TechTags from "@/components/core/TechTag";
+import Avatar from "@/components/features/core/design-system/Avatar";
+import TechTags from "@/components/features/core/TechTag";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
 import { Task } from "@/gql/graphql";
 import { zeroPad } from "@/utils/text-transform";
@@ -33,7 +33,10 @@ export default function TaskTableColumn({ task }: { task: Task }) {
             <SubtasksIcon />
           </div>
 
-          <button className="flex items-center justify-center gap-1">
+          <button
+            className="flex items-center justify-center gap-1"
+            type="button"
+          >
             <p className="text-ravn-neutral-1 text-body-m-regular">Details</p>
             <RightArrowIcon className="text-ravn-neutral-1" />
           </button>

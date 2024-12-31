@@ -1,7 +1,7 @@
 import DownArrowIcon from "@/assets/icons/down-arrow.svg?react";
 import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
-import TaskTableColumn from "@/components/task/task-table/TaskTableColumn";
+import TaskTableColumn from "@/components/features/task/task-table/TaskTableColumn";
 import { Status, useGetTasksQuery } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 import {

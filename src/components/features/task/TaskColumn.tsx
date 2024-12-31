@@ -1,4 +1,4 @@
-import TaskCard from "@/components/task/TaskCard";
+import TaskCard from "@/components/features/task/TaskCard";
 import { InputMaybe, Status, useGetTasksQuery } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 

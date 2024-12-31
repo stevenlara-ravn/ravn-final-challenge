@@ -1,4 +1,4 @@
-import Tag from "@/components/core/design-system/Tag";
+import Tag from "@/components/features/core/design-system/Tag";
 import { deviceTagColors } from "@/constants/tag-colors";
 import { TechTagProps } from "@/types/Tag";
 import { normalizeText } from "@/utils/text-transform";

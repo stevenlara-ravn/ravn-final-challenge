@@ -1,5 +1,5 @@
-import TaskTableHeader from "@/components/core/TableHeader";
-import TaskTableAccordion from "@/components/task/task-table/TaskTableAccordion";
+import TaskTableHeader from "@/components/features/core/TableHeader";
+import TaskTableAccordion from "@/components/features/task/task-table/TaskTableAccordion";
 import { useGetTasksStatusQuery } from "@/gql/graphql";
 
 export default function TaskTable() {

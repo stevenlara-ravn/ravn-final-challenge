@@ -1,4 +1,4 @@
-import TaskColumn from "@/components/task/TaskColumn";
+import TaskColumn from "@/components/features/task/TaskColumn";
 import { useGetTasksStatusQuery } from "@/gql/graphql";
 
 export default function TaskGridSection() {

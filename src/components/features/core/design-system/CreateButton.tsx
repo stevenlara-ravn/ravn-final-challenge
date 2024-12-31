@@ -1,5 +1,5 @@
 import PlusSignIcon from "@/assets/icons/plus-sign.svg?react";
-import Button from "@/components/core/design-system/Button";
+import Button from "@/components/features/core/design-system/Button";
 
 export default function CreateButton() {
   return (
