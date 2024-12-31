@@ -112,6 +112,9 @@ devDependencies:
   graphql-codegen-typescript-graphql-files-modules:
     specifier: 0.18.2
     version: 0.18.2
+  husky:
+    specifier: ^9.1.7
+    version: 9.1.7
   postcss:
     specifier: ^8.4.49
     version: 8.4.49
@@ -5130,6 +5133,12 @@ packages:
       debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
     dev: true
 
   /iconv-lite@0.4.24:

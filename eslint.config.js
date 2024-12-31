@@ -47,7 +47,6 @@ export default tseslint.config(
       "import/newline-after-import": ["error", { count: 1 }],
       "prettier/prettier": "error",
       "@eslint-react/naming-convention/component-name": ["error"],
-      "@eslint-react/naming-convention/filename": ["error"],
     },
   },
 );

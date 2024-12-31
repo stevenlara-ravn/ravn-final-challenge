@@ -1,0 +1,2 @@
+echo "pnpm build" >> .husky/pre-commit
+chmod +x .husky/pre-commit

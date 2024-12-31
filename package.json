@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && eslint . --fix && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier": "prettier --write .",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "codegen": "graphql-codegen --config codegen.ts",
     "prestart": "pnpm run codegen",
-    "predev": "pnpm run codegen"
+    "predev": "pnpm run codegen",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
@@ -52,6 +53,7 @@
     "graphql-codegen-fragment-matcher": "0.18.2",
     "graphql-codegen-typescript-client": "0.18.2",
     "graphql-codegen-typescript-graphql-files-modules": "0.18.2",
+    "husky": "^9.1.7",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
