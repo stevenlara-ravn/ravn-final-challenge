@@ -1,6 +1,6 @@
 import Timer from "@/assets/icons/timer.svg?react";
 import Tag from "@/components/features/core/design-system/Tag";
-import { timerTagColors } from "@/constants/tag-colors";
+import { timerTagColors } from "@/constants/colors";
 
 interface TimerTagProps {
   timeTag: keyof typeof timerTagColors | string;

@@ -5,7 +5,7 @@ import TechTag from "@/components/features/core/TechTag";
 import TimerTag from "@/components/features/core/TimerTag";
 import TaskCardAction from "@/components/features/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
-import { Task } from "@/gql/graphql";
+import { Task, TaskTag } from "@/gql/graphql";
 import { formatDate } from "@/lib/date";
 
 interface TaskCardProps {
@@ -30,7 +30,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       </div>
 
       <div className="flex w-full items-center justify-start gap-2">
-        {task.tags.map((tag) => (
+        {task.tags.map((tag: TaskTag) => (
           <TechTag key={tag} label={tag} />
         ))}
       </div>
