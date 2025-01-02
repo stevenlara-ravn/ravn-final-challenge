@@ -4,9 +4,7 @@ import { useGetTasksStatusQuery } from "@/gql/graphql";
 
 export default function TaskTable() {
   const { data } = useGetTasksStatusQuery({
-    variables: {
-      input: {},
-    },
+    variables: { input: {} },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "cache-and-network",
   });

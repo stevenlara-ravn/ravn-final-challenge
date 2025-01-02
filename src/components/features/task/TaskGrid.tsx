@@ -1,11 +1,9 @@
 import TaskColumn from "@/components/features/task/TaskColumn";
 import { useGetTasksStatusQuery } from "@/gql/graphql";
 
-export default function TaskGridSection() {
+export default function TaskGrid() {
   const { data } = useGetTasksStatusQuery({
-    variables: {
-      input: {},
-    },
+    variables: { input: {} },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "cache-and-network",
   });
