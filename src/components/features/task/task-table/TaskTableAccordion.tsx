@@ -2,7 +2,7 @@ import DownArrowIcon from "@/assets/icons/down-arrow.svg?react";
 import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
 import TaskTableColumn from "@/components/features/task/task-table/TaskTableColumn";
-import { Status, useGetTasksQuery } from "@/gql/graphql";
+import { Status, Task, useGetTasksQuery } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 import {
   Disclosure as Accordion,
@@ -49,11 +49,11 @@ export default function TaskTableAccordion({ status }: { status: Status }) {
           </div>
 
           <AccordionPanel className="-mt-4 flex h-max min-h-14 w-full flex-col items-center justify-center overflow-hidden bg-ravn-neutral-4 text-ravn-neutral-1">
-            <ul className="flex h-full w-full flex-col items-start justify-start overflow-x-auto">
-              {data?.tasks?.map((task) => (
+            <table className="flex h-full w-full flex-col items-start justify-start overflow-x-auto">
+              {data?.tasks?.map((task: Task) => (
                 <TaskTableColumn key={task.id} task={task} />
               ))}
-            </ul>
+            </table>
           </AccordionPanel>
         </>
       )}

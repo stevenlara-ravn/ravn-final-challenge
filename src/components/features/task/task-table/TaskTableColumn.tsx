@@ -11,8 +11,8 @@ import { zeroPad } from "@/utils/text-transform";
 
 export default function TaskTableColumn({ task }: { task: Task }) {
   return (
-    <li className="flex min-h-14 w-full items-center justify-between">
-      <div className="group relative flex h-full w-full min-w-[460px] items-center justify-between gap-2 overflow-hidden border-x border-b border-ravn-neutral-3 px-4 py-1">
+    <tr className="flex min-h-14 w-full items-center justify-between">
+      <td className="group relative flex h-full w-full min-w-[460px] items-center justify-between gap-2 overflow-hidden border-x border-b border-ravn-neutral-3 px-4 py-1">
         <span
           className={`absolute left-0 h-[80%] w-1 ${statusColors[task.status]}`}
         />
@@ -44,9 +44,9 @@ export default function TaskTableColumn({ task }: { task: Task }) {
             <RightArrowIcon className="text-ravn-neutral-1" />
           </button>
         </div>
-      </div>
+      </td>
 
-      <div className="flex h-full w-full min-w-[168px] items-center justify-center overflow-hidden border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-1">
+      <td className="flex h-full w-full min-w-[168px] items-center justify-center overflow-hidden border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-1">
         <div className="flex w-full items-center justify-center gap-2">
           {task.tags.length > 1 ? (
             <>
@@ -60,24 +60,24 @@ export default function TaskTableColumn({ task }: { task: Task }) {
             <TechTags label={task.tags[0]} />
           )}
         </div>
-      </div>
+      </td>
 
-      <div className="flex h-full w-full min-w-[140px] items-center justify-start border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-4 py-2">
+      <td className="flex h-full w-full min-w-[140px] items-center justify-start border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-4 py-2">
         <p className="text-body-m-regular">
           {POINTS_ESTIMATE[task.pointEstimate]} points
         </p>
-      </div>
+      </td>
 
-      <div className="flex h-full w-full min-w-[159px] items-center justify-start gap-2 border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-3">
+      <td className="flex h-full w-full min-w-[159px] items-center justify-start gap-2 border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-3">
         <Avatar />
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-body-m-regular">
           Amelia Nellstrongers
         </p>
-      </div>
+      </td>
 
-      <div className="flex h-full w-full min-w-[141px] items-center justify-start border-b border-r border-ravn-neutral-3 px-4 py-1">
+      <td className="flex h-full w-full min-w-[141px] items-center justify-start border-b border-r border-ravn-neutral-3 px-4 py-1">
         <p className="text-body-m-regular">6 July, 2020</p>
-      </div>
-    </li>
+      </td>
+    </tr>
   );
 }
