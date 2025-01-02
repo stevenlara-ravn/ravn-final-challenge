@@ -1,5 +1,5 @@
-import TaskTable from "@/components/features/task/task-table/TaskTable";
+import TaskView from "@/components/features/task/TaskView";
 
 export default function MyTasks() {
-  return <TaskTable />;
+  return <TaskView defaultViewMode="table" />;
 }

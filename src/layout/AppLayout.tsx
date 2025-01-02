@@ -1,7 +1,6 @@
 import MasterSidebar from "@/components/features/core/MasterSidebar";
 import Searchbar from "@/components/features/core/Searchbar";
 import UserProfile from "@/components/features/core/UserProfile";
-import Topbar from "@/components/features/task/Topbar";
 import { Outlet } from "react-router";
 
 export default function AppLayout() {
@@ -16,13 +15,7 @@ export default function AppLayout() {
             <UserProfile />
           </div>
 
-          <section className="flex h-full w-full flex-col items-center justify-center gap-4">
-            <Topbar />
-
-            <main className="h-[700px] w-full">
-              <Outlet />
-            </main>
-          </section>
+          <Outlet />
         </section>
       </div>
     </main>

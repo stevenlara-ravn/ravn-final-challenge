@@ -1,5 +1,5 @@
-import TaskGridSection from "@/components/features/task/TaskGridSection";
+import TaskView from "@/components/features/task/TaskView";
 
 export default function Dashboard() {
-  return <TaskGridSection />;
+  return <TaskView defaultViewMode="grid" />;
 }
