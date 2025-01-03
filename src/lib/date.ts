@@ -1,4 +1,12 @@
-export const formatDate = (date: string) => {
+/**
+ * Formats a date string to a human readable format
+ * @param date string
+ * @returns string
+ *
+ * @example
+ * formatDate("2023-01-01") // Jan 1, 2023 | yesterday | today | tomorrow
+ */
+export const formatDate = (date: string): string => {
   const dateObject = new Date(date);
   const now = new Date();
 
