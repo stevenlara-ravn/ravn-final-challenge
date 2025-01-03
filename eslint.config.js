@@ -35,7 +35,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       quotes: ["error", "double"],
-      "no-unused-vars": "warn",
+      "no-unused-vars": "off",
       "prefer-const": "warn",
       "react/prop-types": "off",
       "react/self-closing-comp": [

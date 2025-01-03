@@ -13,6 +13,7 @@ export default function ToggleViewModeButton({
       <Button
         className={clsx(viewMode === "table" && "border border-ravn-primary-4")}
         onClick={() => onToggle("table")}
+        type="button"
       >
         <ColumnsIcon
           className={clsx(
@@ -25,6 +26,7 @@ export default function ToggleViewModeButton({
       <Button
         className={clsx(viewMode === "grid" && "border border-ravn-primary-4")}
         onClick={() => onToggle("grid")}
+        type="button"
       >
         <GridIcon
           className={clsx(

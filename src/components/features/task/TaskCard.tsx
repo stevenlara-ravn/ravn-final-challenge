@@ -17,7 +17,7 @@ export default function TaskCard({ task }: TaskCardProps) {
     <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
       <div className="flex w-full items-center justify-between">
         <p className="text-ravn-neutral-1 text-body-l-bold">{task.name}</p>
-        <Button className="h-6 w-6">
+        <Button className="h-6 w-6" type="button">
           <MoreIcon className="text-ravn-neutral-2" />
         </Button>
       </div>

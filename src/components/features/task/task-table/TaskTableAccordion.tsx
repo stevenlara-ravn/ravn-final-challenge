@@ -22,7 +22,7 @@ export default function TaskTableAccordion({ status }: { status: Status }) {
     <Accordion defaultOpen>
       {({ open }) => (
         <>
-          <div className="group sticky top-0 z-10 flex h-14 w-full items-center justify-between gap-10 rounded-t border border-ravn-neutral-3 bg-ravn-neutral-4 px-4 py-1">
+          <div className="group sticky top-0 z-[1] flex h-14 w-full items-center justify-between gap-10 rounded-t border border-ravn-neutral-3 bg-ravn-neutral-4 px-4 py-1">
             <AccordionButton className="flex w-full min-w-[200px] items-center justify-start gap-3 py-2">
               <DownArrowIcon
                 className={clsx(

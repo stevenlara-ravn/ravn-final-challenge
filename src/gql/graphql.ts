@@ -1,22 +1,36 @@
 /* eslint-disable */
 import * as Apollo from "@apollo/client";
 import { gql } from "@apollo/client";
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+    [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
+  };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  DateTime: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  DateTime: { input: any; output: any };
 };
 
 export type CreateTaskInput = {
@@ -49,16 +63,13 @@ export type Mutation = {
   updateTask: Task;
 };
 
-
 export type MutationCreateTaskArgs = {
   input: CreateTaskInput;
 };
 
-
 export type MutationDeleteTaskArgs = {
   input: DeleteTaskInput;
 };
-
 
 export type MutationUpdateTaskArgs = {
   input: UpdateTaskInput;
@@ -70,7 +81,7 @@ export enum PointEstimate {
   Four = "FOUR",
   One = "ONE",
   Two = "TWO",
-  Zero = "ZERO"
+  Zero = "ZERO",
 }
 
 export type Query = {
@@ -79,7 +90,6 @@ export type Query = {
   tasks: Array<Task>;
   users: Array<User>;
 };
-
 
 export type QueryTasksArgs = {
   input: FilterTaskInput;
@@ -91,7 +101,7 @@ export enum Status {
   Cancelled = "CANCELLED",
   Done = "DONE",
   InProgress = "IN_PROGRESS",
-  Todo = "TODO"
+  Todo = "TODO",
 }
 
 export type Task = {
@@ -114,7 +124,7 @@ export enum TaskTag {
   Ios = "IOS",
   NodeJs = "NODE_JS",
   Rails = "RAILS",
-  React = "REACT"
+  React = "REACT",
 }
 
 export type UpdateTaskInput = {
@@ -142,31 +152,153 @@ export type User = {
 /** Type of the User */
 export enum UserType {
   Admin = "ADMIN",
-  Candidate = "CANDIDATE"
+  Candidate = "CANDIDATE",
 }
+
+export type ProfileQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ProfileQuery = {
+  __typename?: "Query";
+  profile: {
+    __typename?: "User";
+    avatar?: string | null;
+    createdAt: any;
+    email: string;
+    fullName: string;
+    id: string;
+    type: UserType;
+    updatedAt: any;
+  };
+};
 
 export type GetTasksStatusQueryVariables = Exact<{
   input: FilterTaskInput;
 }>;
 
-
-export type GetTasksStatusQuery = { __typename?: "Query", tasks: Array<{ __typename?: "Task", status: Status }> };
+export type GetTasksStatusQuery = {
+  __typename?: "Query";
+  tasks: Array<{ __typename?: "Task"; status: Status }>;
+};
 
 export type GetTasksQueryVariables = Exact<{
   input: FilterTaskInput;
 }>;
 
+export type GetTasksQuery = {
+  __typename?: "Query";
+  tasks: Array<{
+    __typename?: "Task";
+    createdAt: any;
+    dueDate: any;
+    id: string;
+    name: string;
+    pointEstimate: PointEstimate;
+    position: number;
+    status: Status;
+    tags: Array<TaskTag>;
+    assignee?: {
+      __typename?: "User";
+      avatar?: string | null;
+      createdAt: any;
+      email: string;
+      fullName: string;
+      id: string;
+      type: UserType;
+      updatedAt: any;
+    } | null;
+    creator: {
+      __typename?: "User";
+      avatar?: string | null;
+      createdAt: any;
+      email: string;
+      fullName: string;
+      id: string;
+      type: UserType;
+      updatedAt: any;
+    };
+  }>;
+};
 
-export type GetTasksQuery = { __typename?: "Query", tasks: Array<{ __typename?: "Task", createdAt: any, dueDate: any, id: string, name: string, pointEstimate: PointEstimate, position: number, status: Status, tags: Array<TaskTag>, assignee?: { __typename?: "User", avatar?: string | null, createdAt: any, email: string, fullName: string, id: string, type: UserType, updatedAt: any } | null, creator: { __typename?: "User", avatar?: string | null, createdAt: any, email: string, fullName: string, id: string, type: UserType, updatedAt: any } }> };
-
-
-export const GetTasksStatusDocument = gql`
-    query getTasksStatus($input: FilterTaskInput!) {
-  tasks(input: $input) {
-    status
+export const ProfileDocument = gql`
+  query Profile {
+    profile {
+      avatar
+      createdAt
+      email
+      fullName
+      id
+      type
+      updatedAt
+    }
   }
+`;
+
+/**
+ * __useProfileQuery__
+ *
+ * To run a query within a React component, call `useProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProfileQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProfileQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(
+    ProfileDocument,
+    options,
+  );
 }
-    `;
+export function useProfileLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProfileQuery,
+    ProfileQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(
+    ProfileDocument,
+    options,
+  );
+}
+export function useProfileSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<ProfileQuery, ProfileQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<ProfileQuery, ProfileQueryVariables>(
+    ProfileDocument,
+    options,
+  );
+}
+export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
+export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
+export type ProfileSuspenseQueryHookResult = ReturnType<
+  typeof useProfileSuspenseQuery
+>;
+export type ProfileQueryResult = Apollo.QueryResult<
+  ProfileQuery,
+  ProfileQueryVariables
+>;
+export const GetTasksStatusDocument = gql`
+  query getTasksStatus($input: FilterTaskInput!) {
+    tasks(input: $input) {
+      status
+    }
+  }
+`;
 
 /**
  * __useGetTasksStatusQuery__
@@ -184,54 +316,96 @@ export const GetTasksStatusDocument = gql`
  *   },
  * });
  */
-export function useGetTasksStatusQuery(baseOptions: Apollo.QueryHookOptions<GetTasksStatusQuery, GetTasksStatusQueryVariables> & ({ variables: GetTasksStatusQueryVariables; skip?: boolean; } | { skip: boolean; })) {
+export function useGetTasksStatusQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetTasksStatusQuery,
+    GetTasksStatusQueryVariables
+  > &
+    (
+      | { variables: GetTasksStatusQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTasksStatusQuery, GetTasksStatusQueryVariables>(GetTasksStatusDocument, options);
+  return Apollo.useQuery<GetTasksStatusQuery, GetTasksStatusQueryVariables>(
+    GetTasksStatusDocument,
+    options,
+  );
 }
-export function useGetTasksStatusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTasksStatusQuery, GetTasksStatusQueryVariables>) {
+export function useGetTasksStatusLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTasksStatusQuery,
+    GetTasksStatusQueryVariables
+  >,
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTasksStatusQuery, GetTasksStatusQueryVariables>(GetTasksStatusDocument, options);
+  return Apollo.useLazyQuery<GetTasksStatusQuery, GetTasksStatusQueryVariables>(
+    GetTasksStatusDocument,
+    options,
+  );
 }
-export function useGetTasksStatusSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetTasksStatusQuery, GetTasksStatusQueryVariables>) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetTasksStatusQuery, GetTasksStatusQueryVariables>(GetTasksStatusDocument, options);
+export function useGetTasksStatusSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+      GetTasksStatusQuery,
+      GetTasksStatusQueryVariables
+    >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    GetTasksStatusQuery,
+    GetTasksStatusQueryVariables
+  >(GetTasksStatusDocument, options);
 }
-export type GetTasksStatusQueryHookResult = ReturnType<typeof useGetTasksStatusQuery>;
-export type GetTasksStatusLazyQueryHookResult = ReturnType<typeof useGetTasksStatusLazyQuery>;
-export type GetTasksStatusSuspenseQueryHookResult = ReturnType<typeof useGetTasksStatusSuspenseQuery>;
-export type GetTasksStatusQueryResult = Apollo.QueryResult<GetTasksStatusQuery, GetTasksStatusQueryVariables>;
+export type GetTasksStatusQueryHookResult = ReturnType<
+  typeof useGetTasksStatusQuery
+>;
+export type GetTasksStatusLazyQueryHookResult = ReturnType<
+  typeof useGetTasksStatusLazyQuery
+>;
+export type GetTasksStatusSuspenseQueryHookResult = ReturnType<
+  typeof useGetTasksStatusSuspenseQuery
+>;
+export type GetTasksStatusQueryResult = Apollo.QueryResult<
+  GetTasksStatusQuery,
+  GetTasksStatusQueryVariables
+>;
 export const GetTasksDocument = gql`
-    query getTasks($input: FilterTaskInput!) {
-  tasks(input: $input) {
-    assignee {
-      avatar
+  query getTasks($input: FilterTaskInput!) {
+    tasks(input: $input) {
+      assignee {
+        avatar
+        createdAt
+        email
+        fullName
+        id
+        type
+        updatedAt
+      }
       createdAt
-      email
-      fullName
+      creator {
+        avatar
+        createdAt
+        email
+        fullName
+        id
+        type
+        updatedAt
+      }
+      dueDate
       id
-      type
-      updatedAt
+      name
+      pointEstimate
+      position
+      status
+      tags
     }
-    createdAt
-    creator {
-      avatar
-      createdAt
-      email
-      fullName
-      id
-      type
-      updatedAt
-    }
-    dueDate
-    id
-    name
-    pointEstimate
-    position
-    status
-    tags
   }
-}
-    `;
+`;
 
 /**
  * __useGetTasksQuery__
@@ -249,19 +423,50 @@ export const GetTasksDocument = gql`
  *   },
  * });
  */
-export function useGetTasksQuery(baseOptions: Apollo.QueryHookOptions<GetTasksQuery, GetTasksQueryVariables> & ({ variables: GetTasksQueryVariables; skip?: boolean; } | { skip: boolean; })) {
+export function useGetTasksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetTasksQuery, GetTasksQueryVariables> &
+    ({ variables: GetTasksQueryVariables; skip?: boolean } | { skip: boolean }),
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTasksQuery, GetTasksQueryVariables>(GetTasksDocument, options);
+  return Apollo.useQuery<GetTasksQuery, GetTasksQueryVariables>(
+    GetTasksDocument,
+    options,
+  );
 }
-export function useGetTasksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTasksQuery, GetTasksQueryVariables>) {
+export function useGetTasksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTasksQuery,
+    GetTasksQueryVariables
+  >,
+) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTasksQuery, GetTasksQueryVariables>(GetTasksDocument, options);
+  return Apollo.useLazyQuery<GetTasksQuery, GetTasksQueryVariables>(
+    GetTasksDocument,
+    options,
+  );
 }
-export function useGetTasksSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetTasksQuery, GetTasksQueryVariables>) {
-  const options = baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetTasksQuery, GetTasksQueryVariables>(GetTasksDocument, options);
+export function useGetTasksSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetTasksQuery, GetTasksQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetTasksQuery, GetTasksQueryVariables>(
+    GetTasksDocument,
+    options,
+  );
 }
 export type GetTasksQueryHookResult = ReturnType<typeof useGetTasksQuery>;
-export type GetTasksLazyQueryHookResult = ReturnType<typeof useGetTasksLazyQuery>;
-export type GetTasksSuspenseQueryHookResult = ReturnType<typeof useGetTasksSuspenseQuery>;
-export type GetTasksQueryResult = Apollo.QueryResult<GetTasksQuery, GetTasksQueryVariables>;
+export type GetTasksLazyQueryHookResult = ReturnType<
+  typeof useGetTasksLazyQuery
+>;
+export type GetTasksSuspenseQueryHookResult = ReturnType<
+  typeof useGetTasksSuspenseQuery
+>;
+export type GetTasksQueryResult = Apollo.QueryResult<
+  GetTasksQuery,
+  GetTasksQueryVariables
+>;
