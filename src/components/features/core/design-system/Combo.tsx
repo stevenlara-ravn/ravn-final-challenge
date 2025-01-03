@@ -5,19 +5,33 @@ import clsx from "clsx";
 interface ComboboxProps extends ReactProps {
   placeholder: string;
   optionIcon: React.ReactNode;
+  value: string;
+  onValueChange: (value: string) => void;
+  contentClassName?: string;
 }
 
-export default function Combo(props: ComboboxProps) {
+export default function Combo({
+  placeholder,
+  optionIcon,
+  value,
+  onValueChange,
+  children,
+  contentClassName,
+  className,
+}: ComboboxProps) {
   return (
-    <Select.Root>
+    <Select.Root onValueChange={onValueChange} value={value}>
       <Select.Trigger
-        aria-label={props.placeholder}
-        className="inline-flex h-full w-full min-w-[128px] flex-row items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded bg-ravn-neutral-2/10 px-4 py-1"
+        aria-label={placeholder}
+        className={clsx(
+          "inline-flex h-full w-full min-w-[128px] flex-row items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded bg-ravn-neutral-2/10 px-4 py-1",
+          className,
+        )}
       >
-        <Select.Icon>{props.optionIcon}</Select.Icon>
+        <Select.Icon>{optionIcon}</Select.Icon>
         <Select.Value
           className="text-body-m-regular"
-          placeholder={props.placeholder}
+          placeholder={placeholder}
         />
       </Select.Trigger>
 
@@ -26,12 +40,12 @@ export default function Combo(props: ComboboxProps) {
           align="start"
           className={clsx(
             "z-20 h-auto w-[122px] rounded-lg border border-ravn-neutral-2 bg-ravn-neutral-3",
-            props.className,
+            contentClassName,
           )}
           position="popper"
         >
           <Select.Viewport className="flex w-full flex-col items-center justify-between py-2">
-            {props.children}
+            {children}
           </Select.Viewport>
         </Select.Content>
       </Select.Portal>

@@ -11,7 +11,7 @@ const ComboItem = forwardRef<HTMLDivElement, ComboItemProps>(
     return (
       <Select.Item
         className={clsx(
-          "flex w-full items-center justify-start gap-2 px-4 py-1 text-ravn-neutral-1 text-body-m-regular",
+          "flex w-full cursor-pointer items-center justify-start gap-2 px-4 py-1 text-ravn-neutral-1 text-body-m-regular",
           className,
         )}
         {...props}

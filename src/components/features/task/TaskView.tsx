@@ -19,7 +19,9 @@ export default function TaskView({
         <CreateTaskButton />
       </div>
 
-      {viewMode === "grid" ? <TaskGrid /> : <TaskTable />}
+      <main className="h-[700px] w-full">
+        {viewMode === "grid" ? <TaskGrid /> : <TaskTable />}
+      </main>
     </section>
   );
 }
