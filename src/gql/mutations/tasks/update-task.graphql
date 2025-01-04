@@ -1,5 +1,5 @@
-query GetTasks($input: FilterTaskInput!) {
-  tasks(input: $input) {
+mutation UpdateTask($input: UpdateTaskInput!) {
+  updateTask(input: $input) {
     assignee {
       avatar
       createdAt

@@ -2,18 +2,16 @@ import AssigneeIcon from "@/assets/icons/assignee.svg?react";
 import Avatar from "@/components/features/core/design-system/Avatar";
 import Combo from "@/components/features/core/design-system/Combo";
 import ComboItem from "@/components/features/core/design-system/ComboItem";
-import ReactProps from "@/types/ReactProps";
+import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskInputs } from "@/types/Task";
 import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
+import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
-interface SelectOptionProps extends ReactProps {
-  selectIcon: React.ReactNode;
-  value: string;
-}
-
 export default function AssigneeCombo() {
+  const { users } = useContext(FormPropsContext);
+
   const {
     formState: { errors },
     watch,
@@ -36,25 +34,18 @@ export default function AssigneeCombo() {
             Assign To...
           </Select.Label>
 
-          <SelectOption selectIcon={<Avatar />} value="John Watts">
-            John Watts
-          </SelectOption>
-          <SelectOption selectIcon={<Avatar />} value="Michaels Jackson">
-            Michaels Jackson
-          </SelectOption>
-          <SelectOption selectIcon={<Avatar />} value="Batman y Robin">
-            Batman y Robin
-          </SelectOption>
+          {users?.map((user) => (
+            <ComboItem
+              className="py-3"
+              key={user.id}
+              selectIcon={<Avatar url={user.avatar} />}
+              value={user.id}
+            >
+              {user.fullName}
+            </ComboItem>
+          ))}
         </Select.Group>
       </Combo>
     </div>
   );
 }
-
-const SelectOption = ({ selectIcon, value, children }: SelectOptionProps) => {
-  return (
-    <ComboItem className="w-full py-3" selectIcon={selectIcon} value={value}>
-      {children}
-    </ComboItem>
-  );
-};

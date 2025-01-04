@@ -11,12 +11,14 @@ import { PointEstimate } from "@/gql/graphql";
 export const mappedPointsEstimate = (
   estimate: PointEstimate | number,
   returnType: "number" | "string",
-) => {
+): number | PointEstimate => {
   if (returnType === "number" && typeof estimate === "string") {
     return POINTS_ESTIMATE[estimate];
-  } else {
+  } else if (returnType === "string" && typeof estimate === "number") {
     return Object.keys(POINTS_ESTIMATE).find(
       (key) => POINTS_ESTIMATE[key as PointEstimate] === estimate,
     ) as PointEstimate;
   }
+
+  throw new Error("Invalid estimate or return type");
 };

@@ -1,20 +1,25 @@
 import EstimatePointsIcon from "@/assets/icons/estimate-points.svg?react";
 import Combo from "@/components/features/core/design-system/Combo";
 import ComboItem from "@/components/features/core/design-system/ComboItem";
+import { FormPropsContext } from "@/context/FormPropsContext";
 import { PointEstimate } from "@/gql/graphql";
+import { mappedPointsEstimate } from "@/helpers/points-estimate";
 import { TaskInputs } from "@/types/Task";
 import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
+import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function EstimateCombo() {
+  const { pointEstimateNumbers } = useContext(FormPropsContext);
+  console.log(pointEstimateNumbers);
+
   const {
     formState: { errors },
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
   const pointEstimate = watch("pointEstimate");
-  console.log(errors);
 
   return (
     <div className="flex flex-col items-center justify-between">
@@ -32,21 +37,17 @@ export default function EstimateCombo() {
             Estimate
           </Select.Label>
 
-          <ComboItem selectIcon={<EstimatePointsIcon />} value="ZER">
-            0 Points
-          </ComboItem>
-          <ComboItem selectIcon={<EstimatePointsIcon />} value="ONE">
-            1 Points
-          </ComboItem>
-          <ComboItem selectIcon={<EstimatePointsIcon />} value="TWO">
-            2 Points
-          </ComboItem>
-          <ComboItem selectIcon={<EstimatePointsIcon />} value="FOUR">
-            4 Points
-          </ComboItem>
-          <ComboItem selectIcon={<EstimatePointsIcon />} value="EIGHT">
-            8 Points
-          </ComboItem>
+          {pointEstimateNumbers
+            .sort((a, b) => a - b)
+            .map((point) => (
+              <ComboItem
+                key={point}
+                selectIcon={<EstimatePointsIcon />}
+                value={mappedPointsEstimate(point, "string") as PointEstimate}
+              >
+                {point} Points
+              </ComboItem>
+            ))}
         </Select.Group>
       </Combo>
     </div>

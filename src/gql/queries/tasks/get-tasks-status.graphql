@@ -1,4 +1,4 @@
-query getTasksStatus($input: FilterTaskInput!) {
+query GetTasksStatus($input: FilterTaskInput!) {
   tasks(input: $input) {
     status
   }

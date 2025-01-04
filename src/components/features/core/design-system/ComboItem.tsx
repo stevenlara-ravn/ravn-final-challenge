@@ -4,10 +4,14 @@ import { forwardRef } from "react";
 
 interface ComboItemProps extends Select.SelectItemProps {
   selectIcon?: React.ReactNode;
+  itemTextClassName?: string;
 }
 
 const ComboItem = forwardRef<HTMLDivElement, ComboItemProps>(
-  ({ children, className, selectIcon, ...props }, forwardedRef) => {
+  (
+    { children, className, itemTextClassName, selectIcon, ...props },
+    forwardedRef,
+  ) => {
     return (
       <Select.Item
         className={clsx(
@@ -18,7 +22,12 @@ const ComboItem = forwardRef<HTMLDivElement, ComboItemProps>(
         ref={forwardedRef}
       >
         {selectIcon && <Select.Icon>{selectIcon}</Select.Icon>}
-        <Select.ItemText className="flex items-center justify-between self-end text-ravn-neutral-5 text-body-m-regular">
+        <Select.ItemText
+          className={clsx(
+            "flex items-center justify-between self-end text-ravn-neutral-5 text-body-m-regular",
+            itemTextClassName,
+          )}
+        >
           {children}
         </Select.ItemText>
       </Select.Item>
