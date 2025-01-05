@@ -17,15 +17,15 @@ export default function AssigneeCombo() {
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
-  const assignee = watch("assignee");
+  const assignee = watch("assigneeId");
 
   return (
     <div className="flex flex-col items-center justify-between">
       <Combo
-        className={clsx(errors.assignee && "bg-ravn-primary-3")}
+        className={clsx(errors.assigneeId && "bg-ravn-primary-3")}
         contentClassName="w-[239px]"
         onValueChange={(value) =>
-          setValue("assignee", value, { shouldValidate: true })
+          setValue("assigneeId", value, { shouldValidate: true })
         }
         optionIcon={<AssigneeIcon />}
         placeholder="Assignee"

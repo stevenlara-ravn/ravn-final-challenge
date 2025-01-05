@@ -30,7 +30,21 @@ export default function TaskForm({
 
   const { handleSubmit, reset } = methods;
 
-  const [createTaskMutation, { loading, error }] = useCreateTaskMutation();
+  const [createTaskMutation, { loading, error }] = useCreateTaskMutation({
+    update: (cache, { data }) => {
+      if (data?.createTask) {
+        const newTask = data.createTask;
+
+        cache.modify({
+          fields: {
+            tasks(existingTasks = []) {
+              return [...existingTasks, newTask];
+            },
+          },
+        });
+      }
+    },
+  });
 
   const onSubmit = async (data: TaskInputs) => {
     try {
@@ -42,6 +56,7 @@ export default function TaskForm({
             pointEstimate: data.pointEstimate,
             tags: data.tags,
             status: Status.Todo,
+            assigneeId: data.assigneeId,
           },
         },
       });
