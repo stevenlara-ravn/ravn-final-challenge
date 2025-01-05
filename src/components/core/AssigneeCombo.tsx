@@ -20,34 +20,32 @@ export default function AssigneeCombo() {
   const assignee = watch("assigneeId");
 
   return (
-    <div className="flex flex-col items-center justify-between">
-      <Combo
-        className={clsx(errors.assigneeId && "bg-ravn-primary-3")}
-        contentClassName="w-[239px]"
-        onValueChange={(value) =>
-          setValue("assigneeId", value, { shouldValidate: true })
-        }
-        optionIcon={<AssigneeIcon />}
-        placeholder="Assignee"
-        value={assignee}
-      >
-        <Select.Group className="h-full w-full">
-          <Select.Label className="px-4 py-2 text-start text-ravn-neutral-2 text-body-xl-bold">
-            Assign To...
-          </Select.Label>
+    <Combo
+      className={clsx(errors.assigneeId && "bg-ravn-primary-3")}
+      contentClassName="w-[239px]"
+      onValueChange={(value) =>
+        setValue("assigneeId", value, { shouldValidate: true })
+      }
+      optionIcon={<AssigneeIcon />}
+      placeholder="Assignee"
+      value={assignee}
+    >
+      <Select.Group className="h-full w-full">
+        <Select.Label className="px-4 py-2 text-start text-ravn-neutral-2 text-body-xl-bold">
+          Assign To...
+        </Select.Label>
 
-          {users?.map((user) => (
-            <ComboItem
-              className="py-3"
-              key={user.id}
-              selectIcon={<Avatar url={user.avatar} />}
-              value={user.id}
-            >
-              {user.fullName}
-            </ComboItem>
-          ))}
-        </Select.Group>
-      </Combo>
-    </div>
+        {users?.map((user) => (
+          <ComboItem
+            className="py-3"
+            key={user.id}
+            selectIcon={<Avatar url={user.avatar} />}
+            value={user.id}
+          >
+            {user.fullName}
+          </ComboItem>
+        ))}
+      </Select.Group>
+    </Combo>
   );
 }

@@ -1,6 +1,6 @@
+import RightArrowIcon from "@/assets/icons/arrow.svg?react";
 import CommentIcon from "@/assets/icons/comment.svg?react";
 import DragIcon from "@/assets/icons/drag-icon.svg?react";
-import RightArrowIcon from "@/assets/icons/right-arrow.svg?react";
 import SubtasksIcon from "@/assets/icons/subtasks.svg?react";
 import Avatar from "@/components/core/design-system/Avatar";
 import TechTags from "@/components/core/TechTag";
