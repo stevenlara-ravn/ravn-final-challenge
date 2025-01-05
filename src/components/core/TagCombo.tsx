@@ -1,4 +1,5 @@
 import TagIcon from "@/assets/icons/tag.svg?react";
+import Checkbox from "@/components/core/design-system/Checkbox";
 import Combo from "@/components/core/design-system/Combo";
 import ComboItem from "@/components/core/design-system/ComboItem";
 import TechTag from "@/components/core/TechTag";
@@ -44,7 +45,6 @@ export default function TagCombo() {
   return (
     <Combo
       className={clsx(
-        "w-max",
         errors.tags && "bg-ravn-primary-3",
         tags.length >= 1 && "bg-transparent",
       )}
@@ -64,7 +64,7 @@ export default function TagCombo() {
           <ComboItem
             className="uppercase"
             key={tag}
-            selectIcon={tags.includes(tag) ? "✅" : "⬜"}
+            selectIcon={<Checkbox checked={tags.includes(tag)} />}
             value={tag}
           >
             {normalizeText(tag)}
