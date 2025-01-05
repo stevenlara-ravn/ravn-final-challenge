@@ -1,3 +1,4 @@
+import LoadingIcon from "@/assets/icons/loading.svg?react";
 import AssigneeCombo from "@/components/core/AssigneeCombo";
 import Button from "@/components/core/design-system/Button";
 import DueDatePicker from "@/components/core/DueDatePicker";
@@ -9,6 +10,7 @@ import { Status, useCreateTaskMutation } from "@/gql/graphql";
 import { taskSchema } from "@/schemas/task";
 import { TaskInputs } from "@/types/Task";
 import { zodResolver } from "@hookform/resolvers/zod";
+import clsx from "clsx";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -99,11 +101,18 @@ export default function TaskForm({
             Cancel
           </Button>
           <Button
-            className="h-full w-full rounded-lg bg-ravn-primary-4 p-2 hover:bg-ravn-primary-2"
+            className={clsx(
+              "h-full w-full rounded-lg bg-ravn-primary-4 p-2 hover:bg-ravn-primary-2",
+              loading && "cursor-not-allowed hover:bg-ravn-primary-4",
+            )}
             disabled={loading}
             type="submit"
           >
-            {loading ? "Creating..." : "Create"}
+            {loading ? (
+              <LoadingIcon className="h-7 w-7 animate-spin text-ravn-primary-3" />
+            ) : (
+              "Create"
+            )}
           </Button>
         </div>
       </form>
