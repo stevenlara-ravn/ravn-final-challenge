@@ -1,9 +1,10 @@
+import TaskCardSkeleton from "@/components/core/TaskCardSkeleton";
 import TaskCard from "@/components/features/task/TaskCard";
 import { Status, useGetTasksQuery } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 
 export default function TaskColumn({ status }: { status: Status }) {
-  const { data } = useGetTasksQuery({
+  const { data, loading } = useGetTasksQuery({
     variables: { input: { status } },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "cache-and-network",
@@ -16,7 +17,13 @@ export default function TaskColumn({ status }: { status: Status }) {
       </p>
 
       <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-6 no-scrollbar">
-        {data?.tasks.map((task) => <TaskCard key={task.id} task={task} />)}
+        {loading ? (
+          <div className="flex h-full w-full items-center justify-center">
+            <TaskCardSkeleton />
+          </div>
+        ) : (
+          data?.tasks.map((task) => <TaskCard key={task.id} task={task} />)
+        )}
       </div>
     </section>
   );
