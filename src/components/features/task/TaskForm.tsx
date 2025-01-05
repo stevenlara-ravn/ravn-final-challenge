@@ -33,12 +33,12 @@ export default function TaskForm({
   const [createTaskMutation, { loading, error }] = useCreateTaskMutation({
     update: (cache, { data }) => {
       if (data?.createTask) {
-        const newTask = data.createTask;
+        const newTaskRef = cache.identify(data.createTask);
 
         cache.modify({
           fields: {
             tasks(existingTasks = []) {
-              return [...existingTasks, newTask];
+              return [...existingTasks, { __ref: newTaskRef }];
             },
           },
         });
