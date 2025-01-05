@@ -1,6 +1,6 @@
 import AssigneeCombo from "@/components/features/core/AssigneeCombo";
 import Button from "@/components/features/core/design-system/Button";
-import DueDate from "@/components/features/core/DueDate";
+import DueDatePicker from "@/components/features/core/DueDatePicker";
 import EstimatePointsCombo from "@/components/features/core/EstimatePointsCombo";
 import TagCombo from "@/components/features/core/TagCombo";
 import TaskTitle from "@/components/features/task/TaskTitle";
@@ -12,18 +12,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FormProvider, useForm } from "react-hook-form";
 
-export default function TaskForm() {
+export default function TaskForm({
+  setOpen,
+}: {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const methods = useForm<TaskInputs>({
     resolver: zodResolver(taskSchema),
     mode: "onChange",
+    reValidateMode: "onChange",
+    defaultValues: {
+      name: "",
+      pointEstimate: undefined,
+      tags: [],
+      dueDate: new Date().toISOString(),
+    },
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
-
-  console.log({ errors });
+  const { handleSubmit, reset } = methods;
 
   const [createTaskMutation, { loading, error }] = useCreateTaskMutation();
 
@@ -41,8 +47,9 @@ export default function TaskForm() {
         },
       });
 
-      console.log(response.data);
       console.log("Task created successfully:", response.data);
+      reset();
+      setOpen(false);
     } catch (err) {
       console.error("Error creating task:", err);
     }
@@ -60,7 +67,7 @@ export default function TaskForm() {
             <EstimatePointsCombo />
             <AssigneeCombo />
             <TagCombo />
-            <DueDate />
+            <DueDatePicker />
           </FormPropsProvider>
         </div>
 

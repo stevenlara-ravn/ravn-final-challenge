@@ -31,7 +31,7 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <div className="flex w-full items-center justify-start gap-2">
         {task.tags.map((tag: TaskTag) => (
-          <TechTag key={tag} label={tag} />
+          <TechTag key={tag} tags={[tag]} />
         ))}
       </div>
 

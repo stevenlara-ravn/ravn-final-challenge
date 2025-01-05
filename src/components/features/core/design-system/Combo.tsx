@@ -3,11 +3,12 @@ import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
 
 interface ComboboxProps extends ReactProps {
-  placeholder: string;
+  placeholder: React.ReactNode;
   optionIcon: React.ReactNode;
   value: string;
   onValueChange: (value: string) => void;
   contentClassName?: string;
+  showPlaceholder?: boolean;
 }
 
 export default function Combo({
@@ -18,17 +19,17 @@ export default function Combo({
   children,
   contentClassName,
   className,
+  showPlaceholder = true,
 }: ComboboxProps) {
   return (
     <Select.Root onValueChange={onValueChange} value={value}>
       <Select.Trigger
-        aria-label={placeholder}
         className={clsx(
           "inline-flex h-full w-full min-w-[128px] flex-row items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded bg-ravn-neutral-2/10 px-4 py-1",
           className,
         )}
       >
-        <Select.Icon>{optionIcon}</Select.Icon>
+        {showPlaceholder ? <Select.Icon>{optionIcon}</Select.Icon> : null}
         <Select.Value
           className="text-body-m-regular"
           placeholder={placeholder}

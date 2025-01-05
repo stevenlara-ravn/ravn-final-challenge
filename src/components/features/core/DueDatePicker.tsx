@@ -1,19 +1,18 @@
 import CalendarIcon from "@/assets/icons/calendar.svg?react";
 import { TaskInputs } from "@/types/Task";
 import clsx from "clsx";
-import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useFormContext } from "react-hook-form";
 
-export default function DueDate() {
+export default function DueDatePicker() {
   const {
     formState: { errors },
+    watch,
+    setValue,
   } = useFormContext<TaskInputs>();
 
-  const [selectedDate, setSelectedDate] = useState<string>(
-    new Date().toISOString(),
-  );
+  const dueDate = watch("dueDate");
 
   return (
     <div className="flex flex-col items-center justify-between">
@@ -26,10 +25,10 @@ export default function DueDate() {
         icon={<CalendarIcon />}
         onChange={(date) => {
           if (date) {
-            setSelectedDate(date.toISOString());
+            setValue("dueDate", date.toISOString(), { shouldValidate: true });
           }
         }}
-        selected={selectedDate ? new Date(selectedDate) : null}
+        selected={dueDate ? new Date(dueDate) : new Date()}
         showIcon={true}
       />
     </div>

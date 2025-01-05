@@ -12,7 +12,6 @@ import { useFormContext } from "react-hook-form";
 
 export default function EstimateCombo() {
   const { pointEstimateNumbers } = useContext(FormPropsContext);
-  console.log(pointEstimateNumbers);
 
   const {
     formState: { errors },
@@ -26,7 +25,9 @@ export default function EstimateCombo() {
       <Combo
         className={clsx(errors.pointEstimate && "bg-ravn-primary-3")}
         onValueChange={(value) =>
-          setValue("pointEstimate", value as PointEstimate)
+          setValue("pointEstimate", value as PointEstimate, {
+            shouldValidate: true,
+          })
         }
         optionIcon={<EstimatePointsIcon />}
         placeholder="Estimate"

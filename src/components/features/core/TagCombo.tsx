@@ -1,6 +1,7 @@
 import TagIcon from "@/assets/icons/tag.svg?react";
 import Combo from "@/components/features/core/design-system/Combo";
 import ComboItem from "@/components/features/core/design-system/ComboItem";
+import TechTag from "@/components/features/core/TechTag";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskTag } from "@/gql/graphql";
 import { TaskInputs } from "@/types/Task";
@@ -18,7 +19,7 @@ export default function TagCombo() {
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
-  const tags = watch("tags") || [];
+  const tags = watch("tags");
 
   const handleTagChange = (value: string) => {
     setValue(
@@ -26,36 +27,50 @@ export default function TagCombo() {
       tags.includes(value as TaskTag)
         ? tags.filter((tag: string) => tag !== value)
         : [...tags, value as TaskTag],
+      { shouldValidate: true },
+    );
+  };
+
+  const renderTechTagPlaceholder = (tags: TaskTag[]) => {
+    if (tags.length === 0) return <p>Label</p>;
+
+    return (
+      <div className="flex gap-2">
+        <TechTag tags={tags} />
+      </div>
     );
   };
 
   return (
-    <div className="flex flex-col items-center justify-between">
-      <Combo
-        className={clsx(errors.tags && "bg-ravn-primary-3")}
-        contentClassName="w-[239px]"
-        onValueChange={handleTagChange}
-        optionIcon={<TagIcon />}
-        placeholder="Label"
-        value=""
-      >
-        <Select.Group className="h-full w-full">
-          <Select.Label className="px-4 py-2 text-start text-ravn-neutral-2 text-body-xl-bold">
-            Tag Title
-          </Select.Label>
+    <Combo
+      className={clsx(
+        "w-max",
+        errors.tags && "bg-ravn-primary-3",
+        tags.length >= 1 && "bg-transparent",
+      )}
+      contentClassName="w-[239px]"
+      onValueChange={handleTagChange}
+      optionIcon={<TagIcon />}
+      placeholder={renderTechTagPlaceholder(tags)}
+      showPlaceholder={tags.length === 0}
+      value=""
+    >
+      <Select.Group className="h-full w-full">
+        <Select.Label className="px-4 py-2 text-start text-ravn-neutral-2 text-body-xl-bold">
+          Tag Title
+        </Select.Label>
 
-          {tagsArray.map((tag) => (
-            <ComboItem
-              className="uppercase"
-              key={tag}
-              selectIcon={tags.includes(tag) ? "✅" : "⬜"}
-              value={tag}
-            >
-              {normalizeText(tag)}
-            </ComboItem>
-          ))}
-        </Select.Group>
-      </Combo>
-    </div>
+        {tagsArray.map((tag) => (
+          <ComboItem
+            className="uppercase"
+            key={tag}
+            selectIcon={tags.includes(tag) ? "✅" : "⬜"}
+            value={tag}
+          >
+            {normalizeText(tag)}
+          </ComboItem>
+        ))}
+      </Select.Group>
+    </Combo>
   );
 }

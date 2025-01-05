@@ -13,7 +13,9 @@ export default function TaskTitle() {
     <div className="flex w-full flex-col items-start justify-between">
       <input
         className="h-8 w-full bg-ravn-neutral-3 outline-none text-body-xl-bold placeholder:text-ravn-neutral-2"
-        onChange={(e) => setValue("name", e.target.value)}
+        onChange={(e) =>
+          setValue("name", e.target.value, { shouldValidate: true })
+        }
         placeholder="Task Title"
         type="text"
         value={name}

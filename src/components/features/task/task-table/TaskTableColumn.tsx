@@ -51,17 +51,7 @@ export default function TaskTableColumn({ task }: { task: Task }) {
 
         <td className="flex h-full w-full min-w-[168px] items-center justify-center overflow-hidden border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-1">
           <div className="flex w-full items-center justify-center gap-2">
-            {task.tags.length > 1 ? (
-              <>
-                <TechTags label={task.tags[0]} />
-                <TechTags
-                  className="bg-ravn-neutral-2/10"
-                  label={`+${task.tags.length - 1}`}
-                />
-              </>
-            ) : (
-              <TechTags label={task.tags[0]} />
-            )}
+            <TechTags tags={task.tags} />
           </div>
         </td>
 

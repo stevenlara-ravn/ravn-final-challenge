@@ -6,5 +6,7 @@ export const taskSchema = z.object({
   dueDate: z.string().datetime({ message: "Due date must be a valid date" }),
   name: z.string().min(1, { message: "Task name is required" }),
   pointEstimate: z.nativeEnum(PointEstimate),
-  tags: z.array(z.nativeEnum(TaskTag)),
+  tags: z
+    .array(z.nativeEnum(TaskTag))
+    .min(1, { message: "At least one tag is required" }),
 });

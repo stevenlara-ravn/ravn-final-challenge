@@ -5,17 +5,37 @@ import ReactProps from "@/types/ReactProps";
 import { normalizeText } from "@/utils/text-transform";
 
 interface TechTagProps extends ReactProps {
-  label: `${TaskTag}` | `+${number}`;
+  tags: TaskTag[];
 }
 
-export default function TechTag(props: TechTagProps) {
+function TechTagItem({
+  content,
+  className,
+}: {
+  content: string;
+  className?: string;
+}) {
   return (
-    <Tag
-      className={`${deviceTagColors[props.label as TaskTag]} ${props.className}`}
-    >
+    <Tag className={className}>
       <p className="text-center uppercase text-body-m-bold">
-        {normalizeText(props.label)}
+        {normalizeText(content)}
       </p>
     </Tag>
+  );
+}
+
+export default function TechTag({ tags }: TechTagProps) {
+  if (!tags || tags.length === 0) return null;
+
+  return tags.length === 1 ? (
+    <TechTagItem className={deviceTagColors[tags[0]]} content={tags[0]} />
+  ) : (
+    <>
+      <TechTagItem className={deviceTagColors[tags[0]]} content={tags[0]} />
+      <TechTagItem
+        className="bg-ravn-neutral-2/10"
+        content={`+${tags.length - 1}`}
+      />
+    </>
   );
 }

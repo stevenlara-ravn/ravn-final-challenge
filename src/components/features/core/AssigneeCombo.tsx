@@ -24,7 +24,9 @@ export default function AssigneeCombo() {
       <Combo
         className={clsx(errors.assignee && "bg-ravn-primary-3")}
         contentClassName="w-[239px]"
-        onValueChange={(value) => setValue("assignee", value)}
+        onValueChange={(value) =>
+          setValue("assignee", value, { shouldValidate: true })
+        }
         optionIcon={<AssigneeIcon />}
         placeholder="Assignee"
         value={assignee}
