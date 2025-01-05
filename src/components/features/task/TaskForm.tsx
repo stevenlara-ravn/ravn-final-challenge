@@ -10,6 +10,7 @@ import { taskSchema } from "@/schemas/task";
 import { TaskInputs } from "@/types/Task";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export default function TaskForm({
   setOpen,
@@ -47,26 +48,28 @@ export default function TaskForm({
   });
 
   const onSubmit = async (data: TaskInputs) => {
-    try {
-      const response = await createTaskMutation({
-        variables: {
-          input: {
-            dueDate: new Date(data.dueDate).toISOString(),
-            name: data.name,
-            pointEstimate: data.pointEstimate,
-            tags: data.tags,
-            status: Status.Todo,
-            assigneeId: data.assigneeId,
-          },
+    await createTaskMutation({
+      variables: {
+        input: {
+          dueDate: new Date(data.dueDate).toISOString(),
+          name: data.name,
+          pointEstimate: data.pointEstimate,
+          tags: data.tags,
+          status: Status.Todo,
+          assigneeId: data.assigneeId,
         },
-      });
+      },
+      onCompleted: () => {
+        toast.success("Task created successfully!");
+      },
+      onError: (error) => {
+        toast.error("Oops! Something went wrong.");
+        console.error(error);
+      },
+    });
 
-      console.log("Task created successfully:", response.data);
-      reset();
-      setOpen(false);
-    } catch (err) {
-      console.error("Error creating task:", err);
-    }
+    reset();
+    setOpen(false);
   };
 
   return (
