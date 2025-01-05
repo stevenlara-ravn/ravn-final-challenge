@@ -19,7 +19,10 @@ export default function CreateTaskButton() {
       </Button>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[2] bg-black/10 backdrop-blur-sm" />
+        <Dialog.Overlay
+          className="fixed inset-0 z-[2] bg-black/10 backdrop-blur-sm"
+          onClick={() => setOpen(false)}
+        />
         <VisuallyHidden.Root>
           <Dialog.Title />
           <Dialog.Description />

@@ -9,7 +9,6 @@ import { Status, useCreateTaskMutation } from "@/gql/graphql";
 import { taskSchema } from "@/schemas/task";
 import { TaskInputs } from "@/types/Task";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as Dialog from "@radix-ui/react-dialog";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function TaskForm({
@@ -74,14 +73,13 @@ export default function TaskForm({
         {error && <p className="text-red-500">Error: {error.message}</p>}
 
         <div className="flex h-10 w-[150px] items-center justify-between gap-6 self-end text-body-m-regular">
-          <Dialog.Close asChild>
-            <button
-              className="h-full w-full rounded-lg p-2 hover:bg-ravn-neutral-4"
-              type="button"
-            >
-              Cancel
-            </button>
-          </Dialog.Close>
+          <Button
+            className="h-full w-full rounded-lg p-2 hover:bg-ravn-neutral-4"
+            onClick={() => setOpen(false)}
+            type="button"
+          >
+            Cancel
+          </Button>
           <Button
             className="h-full w-full rounded-lg bg-ravn-primary-4 p-2 hover:bg-ravn-primary-2"
             disabled={loading}
