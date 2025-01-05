@@ -1,5 +1,5 @@
 import BellIcon from "@/assets/icons/user-profile/bell.svg?react";
-import Avatar from "@/components/features/core/design-system/Avatar";
+import Avatar from "@/components/core/design-system/Avatar";
 
 export default function UserProfile() {
   return (

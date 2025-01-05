@@ -1,6 +1,6 @@
 import EstimatePointsIcon from "@/assets/icons/estimate-points.svg?react";
-import Combo from "@/components/features/core/design-system/Combo";
-import ComboItem from "@/components/features/core/design-system/ComboItem";
+import Combo from "@/components/core/design-system/Combo";
+import ComboItem from "@/components/core/design-system/ComboItem";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { PointEstimate } from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";

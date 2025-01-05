@@ -1,8 +1,8 @@
 import MoreIcon from "@/assets/icons/more.svg?react";
-import Avatar from "@/components/features/core/design-system/Avatar";
-import Button from "@/components/features/core/design-system/Button";
-import TechTag from "@/components/features/core/TechTag";
-import TimerTag from "@/components/features/core/TimerTag";
+import Avatar from "@/components/core/design-system/Avatar";
+import Button from "@/components/core/design-system/Button";
+import TechTag from "@/components/core/TechTag";
+import TimerTag from "@/components/core/TimerTag";
 import TaskCardAction from "@/components/features/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
 import { Task, TaskTag } from "@/gql/graphql";

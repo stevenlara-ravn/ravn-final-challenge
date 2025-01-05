@@ -1,8 +1,8 @@
-import AssigneeCombo from "@/components/features/core/AssigneeCombo";
-import Button from "@/components/features/core/design-system/Button";
-import DueDatePicker from "@/components/features/core/DueDatePicker";
-import EstimatePointsCombo from "@/components/features/core/EstimatePointsCombo";
-import TagCombo from "@/components/features/core/TagCombo";
+import AssigneeCombo from "@/components/core/AssigneeCombo";
+import Button from "@/components/core/design-system/Button";
+import DueDatePicker from "@/components/core/DueDatePicker";
+import EstimatePointsCombo from "@/components/core/EstimatePointsCombo";
+import TagCombo from "@/components/core/TagCombo";
 import TaskTitle from "@/components/features/task/TaskTitle";
 import { FormPropsProvider } from "@/context/FormPropsContext";
 import { Status, useCreateTaskMutation } from "@/gql/graphql";

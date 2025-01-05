@@ -1,5 +1,5 @@
-import CreateTaskButton from "@/components/features/core/CreateTaskButton";
-import ToggleViewModeButton from "@/components/features/core/design-system/ToggleViewModeButton";
+import CreateTaskButton from "@/components/core/CreateTaskButton";
+import ToggleViewModeButton from "@/components/core/design-system/ToggleViewModeButton";
 import TaskTable from "@/components/features/task/task-table/TaskTable";
 import TaskGrid from "@/components/features/task/TaskGrid";
 import useToggleViewMode from "@/hooks/useToggleViewMode";

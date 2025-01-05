@@ -1,7 +1,7 @@
 import AssigneeIcon from "@/assets/icons/assignee.svg?react";
-import Avatar from "@/components/features/core/design-system/Avatar";
-import Combo from "@/components/features/core/design-system/Combo";
-import ComboItem from "@/components/features/core/design-system/ComboItem";
+import Avatar from "@/components/core/design-system/Avatar";
+import Combo from "@/components/core/design-system/Combo";
+import ComboItem from "@/components/core/design-system/ComboItem";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskInputs } from "@/types/Task";
 import * as Select from "@radix-ui/react-select";

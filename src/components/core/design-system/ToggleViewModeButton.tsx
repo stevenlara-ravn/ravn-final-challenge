@@ -1,6 +1,6 @@
 import ColumnsIcon from "@/assets/icons/master-sidebar/columns.svg?react";
 import GridIcon from "@/assets/icons/master-sidebar/grid.svg?react";
-import Button from "@/components/features/core/design-system/Button";
+import Button from "@/components/core/design-system/Button";
 import { ToggleViewModeButtonProps } from "@/types/ViewModeTypes";
 import clsx from "clsx";
 

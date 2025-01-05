@@ -1,5 +1,5 @@
 import Timer from "@/assets/icons/timer.svg?react";
-import Tag from "@/components/features/core/design-system/Tag";
+import Tag from "@/components/core/design-system/Tag";
 import { timerTagColors } from "@/constants/colors";
 
 interface TimerTagProps {

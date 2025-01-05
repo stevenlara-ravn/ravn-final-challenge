@@ -1,7 +1,7 @@
 import TagIcon from "@/assets/icons/tag.svg?react";
-import Combo from "@/components/features/core/design-system/Combo";
-import ComboItem from "@/components/features/core/design-system/ComboItem";
-import TechTag from "@/components/features/core/TechTag";
+import Combo from "@/components/core/design-system/Combo";
+import ComboItem from "@/components/core/design-system/ComboItem";
+import TechTag from "@/components/core/TechTag";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskTag } from "@/gql/graphql";
 import { TaskInputs } from "@/types/Task";

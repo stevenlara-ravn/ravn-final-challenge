@@ -1,4 +1,4 @@
-import Tag from "@/components/features/core/design-system/Tag";
+import Tag from "@/components/core/design-system/Tag";
 import { deviceTagColors } from "@/constants/colors";
 import { TaskTag } from "@/gql/graphql";
 import ReactProps from "@/types/ReactProps";
