@@ -3,6 +3,7 @@ import Avatar from "@/components/core/design-system/Avatar";
 import Combo from "@/components/core/design-system/Combo";
 import ComboItem from "@/components/core/design-system/ComboItem";
 import { FormPropsContext } from "@/context/FormPropsContext";
+import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
 import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
@@ -11,13 +12,14 @@ import { useFormContext } from "react-hook-form";
 
 export default function AssigneeCombo() {
   const { users } = useContext(FormPropsContext);
+  const { currentTask } = useFormState((state) => state);
 
   const {
     formState: { errors },
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
-  const assignee = watch("assigneeId");
+  const assignee = watch("assigneeId", currentTask?.assignee?.id);
 
   return (
     <Combo

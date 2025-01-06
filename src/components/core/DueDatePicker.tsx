@@ -1,5 +1,6 @@
 import ArrowIcon from "@/assets/icons/arrow.svg?react";
 import CalendarIcon from "@/assets/icons/calendar.svg?react";
+import { useFormState } from "@/stores/form-state";
 import "@/styles/due-date-picker.css";
 import { TaskInputs } from "@/types/Task";
 import clsx from "clsx";
@@ -46,13 +47,15 @@ const CustomHeader = ({
 };
 
 export default function DueDatePicker() {
+  const { currentTask } = useFormState((state) => state);
+
   const {
     formState: { errors },
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
 
-  const dueDate = watch("dueDate");
+  const dueDate = watch("dueDate", currentTask?.dueDate);
 
   return (
     <DatePicker

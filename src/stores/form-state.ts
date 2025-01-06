@@ -4,13 +4,13 @@ import { create } from "zustand";
 interface FormState {
   isFormOpen: boolean;
   setIsFormOpen: (isFormOpen: boolean) => void;
-  taskEditing?: Task;
-  setCurrentTask: (taskEditing: Task) => void;
+  currentTask?: Task | undefined;
+  setCurrentTask: (currentTask?: Task) => void;
 }
 
 export const useFormState = create<FormState>((set) => ({
   isFormOpen: false,
-  taskEditing: undefined,
+  currentTask: undefined,
   setIsFormOpen: (isFormOpen: boolean) => set({ isFormOpen }),
-  setCurrentTask: (taskEditing: Task) => set({ taskEditing }),
+  setCurrentTask: (currentTask: Task | undefined) => set({ currentTask }),
 }));

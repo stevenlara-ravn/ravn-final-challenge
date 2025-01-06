@@ -5,6 +5,7 @@ import ComboItem from "@/components/core/design-system/ComboItem";
 import TechTag from "@/components/core/TechTag";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskTag } from "@/gql/graphql";
+import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
 import { normalizeText } from "@/utils/text-transform";
 import * as Select from "@radix-ui/react-select";
@@ -14,13 +15,14 @@ import { useFormContext } from "react-hook-form";
 
 export default function TagCombo() {
   const { tags: tagsArray } = useContext(FormPropsContext);
+  const { currentTask } = useFormState((state) => state);
 
   const {
     formState: { errors },
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
-  const tags = watch("tags");
+  const tags = watch("tags", currentTask?.tags);
 
   const handleTagChange = (value: string) => {
     setValue(

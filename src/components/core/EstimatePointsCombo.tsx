@@ -4,6 +4,7 @@ import ComboItem from "@/components/core/design-system/ComboItem";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { PointEstimate } from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
+import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
 import * as Select from "@radix-ui/react-select";
 import clsx from "clsx";
@@ -12,13 +13,14 @@ import { useFormContext } from "react-hook-form";
 
 export default function EstimateCombo() {
   const { pointEstimateNumbers } = useContext(FormPropsContext);
+  const { currentTask } = useFormState((state) => state);
 
   const {
     formState: { errors },
     watch,
     setValue,
   } = useFormContext<TaskInputs>();
-  const pointEstimate = watch("pointEstimate");
+  const pointEstimate = watch("pointEstimate", currentTask?.pointEstimate);
 
   return (
     <Combo
