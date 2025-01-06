@@ -7,7 +7,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Fragment } from "react";
 
 export default function DropDownMenu({ task }: { task: Task }) {
-  const { setIsFormOpen, setCurrentTask } = useFormState((state) => state);
+  const { setIsFormOpen, setCurrentTask, setIsDeleteTaskModalOpen } =
+    useFormState((state) => state);
 
   return (
     <Menu>
@@ -41,6 +42,10 @@ export default function DropDownMenu({ task }: { task: Task }) {
         <MenuItem>
           <button
             className="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 data-[focus]:bg-white/10"
+            onClick={() => {
+              setCurrentTask(task);
+              setIsDeleteTaskModalOpen(true);
+            }}
             type="button"
           >
             <DeleteIcon />

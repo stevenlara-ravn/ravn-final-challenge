@@ -6,6 +6,8 @@ interface FormState {
   setIsFormOpen: (isFormOpen: boolean) => void;
   currentTask?: Task | undefined;
   setCurrentTask: (currentTask?: Task) => void;
+  isDeleteTaskModalOpen: boolean;
+  setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) => void;
 }
 
 export const useFormState = create<FormState>((set) => ({
@@ -13,4 +15,9 @@ export const useFormState = create<FormState>((set) => ({
   currentTask: undefined,
   setIsFormOpen: (isFormOpen: boolean) => set({ isFormOpen }),
   setCurrentTask: (currentTask: Task | undefined) => set({ currentTask }),
+  isDeleteTaskModalOpen: false,
+  setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) =>
+    set({ isDeleteTaskModalOpen }),
 }));
+
+console.log(useFormState.getState().currentTask);

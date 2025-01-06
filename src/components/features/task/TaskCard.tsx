@@ -14,8 +14,10 @@ interface TaskCardProps {
 export default function TaskCard({ task }: TaskCardProps) {
   return (
     <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
-      <div className="flex w-full items-center justify-between">
-        <p className="text-ravn-neutral-1 text-body-l-bold">{task.name}</p>
+      <div className="flex h-8 w-full items-center justify-between">
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-ravn-neutral-1 text-body-l-bold">
+          {task.name}
+        </p>
 
         <DropDownMenu task={task} />
       </div>

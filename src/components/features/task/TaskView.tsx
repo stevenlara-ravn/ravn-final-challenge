@@ -1,10 +1,11 @@
 import CreateTaskButton from "@/components/core/CreateTaskButton";
 import ToggleViewModeButton from "@/components/core/design-system/ToggleViewModeButton";
+import DeleteTaskModal from "@/components/features/task/DeleteTaskModal";
 import TaskTable from "@/components/features/task/task-table/TaskTable";
+import TaskFormModal from "@/components/features/task/TaskFormModal";
 import TaskGrid from "@/components/features/task/TaskGrid";
 import useToggleViewMode from "@/hooks/useToggleViewMode";
 import { ViewMode } from "@/types/ViewModeTypes";
-import TaskFormModal from "./TaskFormModal";
 
 export default function TaskView({
   defaultViewMode,
@@ -25,6 +26,7 @@ export default function TaskView({
       </main>
 
       <TaskFormModal />
+      <DeleteTaskModal />
     </section>
   );
 }
