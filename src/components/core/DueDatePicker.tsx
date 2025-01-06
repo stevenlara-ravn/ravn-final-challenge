@@ -3,7 +3,7 @@ import CalendarIcon from "@/assets/icons/calendar.svg?react";
 import { useFormState } from "@/stores/form-state";
 import "@/styles/due-date-picker.css";
 import { TaskInputs } from "@/types/Task";
-import clsx from "clsx";
+import { cn } from "@/utils/cn";
 import DatePicker from "react-datepicker";
 import { useFormContext } from "react-hook-form";
 
@@ -59,7 +59,7 @@ export default function DueDatePicker() {
 
   return (
     <DatePicker
-      className={clsx(
+      className={cn(
         "h-8 max-w-[139px] bg-ravn-neutral-2/10 text-center outline-none text-body-m-bold",
         errors.dueDate && "bg-ravn-primary-3",
       )}

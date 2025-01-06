@@ -6,8 +6,8 @@ import { PointEstimate } from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
+import { cn } from "@/utils/cn";
 import * as Select from "@radix-ui/react-select";
-import clsx from "clsx";
 import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -24,7 +24,7 @@ export default function EstimateCombo() {
 
   return (
     <Combo
-      className={clsx(errors.pointEstimate && "bg-ravn-primary-3")}
+      className={cn(errors.pointEstimate && "bg-ravn-primary-3")}
       onValueChange={(value) =>
         setValue("pointEstimate", value as PointEstimate, {
           shouldValidate: true,

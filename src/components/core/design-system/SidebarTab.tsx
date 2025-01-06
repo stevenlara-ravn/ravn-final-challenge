@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/utils/cn";
 import { NavLink } from "react-router";
 
 interface SidebarTabProps {
@@ -12,7 +12,7 @@ export default function SidebarTab({ icon, label, url }: SidebarTabProps) {
     <li className="h-max w-full">
       <NavLink
         className={({ isActive }: { isActive: boolean }) =>
-          clsx(
+          cn(
             "flex h-[56px] w-full items-center justify-start gap-4 pl-4 text-ravn-neutral-2 hover:text-ravn-primary-4",
             {
               "border-r-4 border-ravn-primary-4 bg-gradient-to-r from-[#BA252500] from-10% to-[#D24D4D1A] to-100% text-ravn-primary-4":

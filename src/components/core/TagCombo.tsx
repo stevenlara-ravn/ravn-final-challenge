@@ -7,9 +7,9 @@ import { FormPropsContext } from "@/context/FormPropsContext";
 import { TaskTag } from "@/gql/graphql";
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
+import { cn } from "@/utils/cn";
 import { normalizeText } from "@/utils/text-transform";
 import * as Select from "@radix-ui/react-select";
-import clsx from "clsx";
 import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -46,7 +46,7 @@ export default function TagCombo() {
 
   return (
     <Combo
-      className={clsx(
+      className={cn(
         errors.tags && "bg-ravn-primary-3",
         tags.length >= 1 && "bg-transparent",
       )}

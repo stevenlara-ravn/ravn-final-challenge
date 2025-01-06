@@ -5,8 +5,8 @@ import ComboItem from "@/components/core/design-system/ComboItem";
 import { FormPropsContext } from "@/context/FormPropsContext";
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
+import { cn } from "@/utils/cn";
 import * as Select from "@radix-ui/react-select";
-import clsx from "clsx";
 import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -23,7 +23,7 @@ export default function AssigneeCombo() {
 
   return (
     <Combo
-      className={clsx(errors.assigneeId && "bg-ravn-primary-3")}
+      className={cn(errors.assigneeId && "bg-ravn-primary-3")}
       contentClassName="w-[239px]"
       onValueChange={(value) =>
         setValue("assigneeId", value, { shouldValidate: true })

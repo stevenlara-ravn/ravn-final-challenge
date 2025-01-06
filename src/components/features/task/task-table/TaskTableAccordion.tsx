@@ -3,13 +3,13 @@ import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
 import TaskTableColumn from "@/components/features/task/task-table/TaskTableColumn";
 import { Status, Task } from "@/gql/graphql";
+import { cn } from "@/utils/cn";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 import {
   Disclosure as Accordion,
   DisclosureButton as AccordionButton,
   DisclosurePanel as AccordionPanel,
 } from "@headlessui/react";
-import clsx from "clsx";
 
 interface TaskTableAccordionProps {
   status: Status;
@@ -27,7 +27,7 @@ export default function TaskTableAccordion({
           <div className="group sticky top-0 z-[1] flex h-14 w-full items-center justify-between gap-10 rounded-t border border-ravn-neutral-3 bg-ravn-neutral-4 px-4 py-1">
             <AccordionButton className="flex w-full min-w-[200px] items-center justify-start gap-3 py-2">
               <DownArrowIcon
-                className={clsx(
+                className={cn(
                   "h-[6px] w-3 text-ravn-neutral-2",
                   open && "rotate-180",
                 )}

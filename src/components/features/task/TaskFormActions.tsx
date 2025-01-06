@@ -1,6 +1,6 @@
 import LoadingIcon from "@/assets/icons/loading.svg?react";
 import Button from "@/components/core/design-system/Button";
-import clsx from "clsx";
+import { cn } from "@/utils/cn";
 
 type Action = "create" | "update" | "delete";
 
@@ -21,7 +21,7 @@ const RenderActionButton = ({
 }: TaskFormActionsProps) => {
   return (
     <Button
-      className={clsx(
+      className={cn(
         "h-full w-full rounded-lg bg-ravn-primary-4 p-2 capitalize hover:bg-ravn-primary-2",
         loading && "cursor-not-allowed hover:bg-ravn-primary-4",
       )}
