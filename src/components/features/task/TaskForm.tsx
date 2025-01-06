@@ -1,18 +1,10 @@
-import LoadingIcon from "@/assets/icons/loading.svg?react";
-import AssigneeCombo from "@/components/core/AssigneeCombo";
-import Button from "@/components/core/design-system/Button";
-import DueDatePicker from "@/components/core/DueDatePicker";
-import EstimatePointsCombo from "@/components/core/EstimatePointsCombo";
-import TagCombo from "@/components/core/TagCombo";
-import TaskTitle from "@/components/features/task/TaskTitle";
-import { FormPropsProvider } from "@/context/FormPropsContext";
-import { Status, useCreateTaskMutation } from "@/gql/graphql";
+import TaskFormActions from "@/components/features/task/TaskFormActions";
+import TaskFormFields from "@/components/features/task/TaskFormFields";
+import useCreateTask from "@/hooks/task-actions/useCreateTask";
 import { taskSchema } from "@/schemas/task";
 import { TaskInputs } from "@/types/Task";
 import { zodResolver } from "@hookform/resolvers/zod";
-import clsx from "clsx";
 import { FormProvider, useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 export default function TaskForm({
   setOpen,
@@ -30,49 +22,14 @@ export default function TaskForm({
       dueDate: new Date().toISOString(),
     },
   });
-
   const { handleSubmit, reset } = methods;
 
-  const [createTaskMutation, { loading, error }] = useCreateTaskMutation({
-    update: (cache, { data }) => {
-      if (data?.createTask) {
-        const newTaskRef = cache.identify(data.createTask);
-
-        cache.modify({
-          fields: {
-            tasks(existingTasks = []) {
-              return [...existingTasks, { __ref: newTaskRef }];
-            },
-          },
-        });
-      }
-    },
-  });
-
-  const onSubmit = async (data: TaskInputs) => {
-    await createTaskMutation({
-      variables: {
-        input: {
-          dueDate: new Date(data.dueDate).toISOString(),
-          name: data.name,
-          pointEstimate: data.pointEstimate,
-          tags: data.tags,
-          status: Status.Todo,
-          assigneeId: data.assigneeId,
-        },
-      },
-      onCompleted: () => {
-        toast.success("Task created successfully!");
-      },
-      onError: (error) => {
-        toast.error("Oops! Something went wrong.");
-        console.error(error);
-      },
-    });
-
+  const { createTask, loading } = useCreateTask(() => {
     reset();
     setOpen(false);
-  };
+  });
+
+  const onSubmit = async (data: TaskInputs) => createTask(data);
 
   return (
     <FormProvider {...methods}>
@@ -80,41 +37,8 @@ export default function TaskForm({
         className="flex flex-col items-center justify-between gap-6"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <TaskTitle />
-        <div className="flex min-h-8 w-full items-center justify-between gap-4">
-          <FormPropsProvider>
-            <EstimatePointsCombo />
-            <AssigneeCombo />
-            <TagCombo />
-            <DueDatePicker />
-          </FormPropsProvider>
-        </div>
-
-        {error && <p className="text-red-500">Error: {error.message}</p>}
-
-        <div className="flex h-10 w-[150px] items-center justify-between gap-6 self-end text-body-m-regular">
-          <Button
-            className="h-full w-full rounded-lg p-2 hover:bg-ravn-neutral-4"
-            onClick={() => setOpen(false)}
-            type="button"
-          >
-            Cancel
-          </Button>
-          <Button
-            className={clsx(
-              "h-full w-full rounded-lg bg-ravn-primary-4 p-2 hover:bg-ravn-primary-2",
-              loading && "cursor-not-allowed hover:bg-ravn-primary-4",
-            )}
-            disabled={loading}
-            type="submit"
-          >
-            {loading ? (
-              <LoadingIcon className="h-7 w-7 animate-spin text-ravn-primary-3" />
-            ) : (
-              "Create"
-            )}
-          </Button>
-        </div>
+        <TaskFormFields />
+        <TaskFormActions loading={loading} setOpen={setOpen} />
       </form>
     </FormProvider>
   );
