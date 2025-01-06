@@ -112,6 +112,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.20
     version: 10.4.20(postcss@8.4.49)
+  dotenv:
+    specifier: ^16.4.7
+    version: 16.4.7
   eslint:
     specifier: ^9.17.0
     version: 9.17.0
