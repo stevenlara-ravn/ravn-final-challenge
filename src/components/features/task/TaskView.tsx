@@ -4,6 +4,7 @@ import TaskTable from "@/components/features/task/task-table/TaskTable";
 import TaskGrid from "@/components/features/task/TaskGrid";
 import useToggleViewMode from "@/hooks/useToggleViewMode";
 import { ViewMode } from "@/types/ViewModeTypes";
+import TaskFormModal from "./TaskFormModal";
 
 export default function TaskView({
   defaultViewMode,
@@ -22,6 +23,8 @@ export default function TaskView({
       <main className="h-[700px] w-full">
         {viewMode === "grid" ? <TaskGrid /> : <TaskTable />}
       </main>
+
+      <TaskFormModal />
     </section>
   );
 }

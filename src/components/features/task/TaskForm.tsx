@@ -17,7 +17,7 @@ import { toast } from "sonner";
 export default function TaskForm({
   setOpen,
 }: {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (_: boolean) => void;
 }) {
   const methods = useForm<TaskInputs>({
     resolver: zodResolver(taskSchema),
