@@ -61,7 +61,7 @@ export default function TaskTableColumn({ task }: { task: Task }) {
       <td className="flex h-full w-full min-w-[159px] items-center justify-start gap-2 border-b border-r border-ravn-neutral-3 border-r-ravn-neutral-3 px-2 py-3">
         <Avatar />
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-body-m-regular">
-          Amelia Nellstrongers
+          {task.assignee?.fullName ?? "No Assignee"}
         </p>
       </td>
 

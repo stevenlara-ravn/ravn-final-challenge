@@ -2,7 +2,7 @@ import DownArrowIcon from "@/assets/icons/down-arrow.svg?react";
 import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
 import TaskTableColumn from "@/components/features/task/task-table/TaskTableColumn";
-import { Status, Task, useGetTasksQuery } from "@/gql/graphql";
+import { Status, Task } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 import {
   Disclosure as Accordion,
@@ -11,13 +11,15 @@ import {
 } from "@headlessui/react";
 import clsx from "clsx";
 
-export default function TaskTableAccordion({ status }: { status: Status }) {
-  const { data } = useGetTasksQuery({
-    variables: { input: { status } },
-    notifyOnNetworkStatusChange: true,
-    fetchPolicy: "cache-and-network",
-  });
+interface TaskTableAccordionProps {
+  status: Status;
+  tasks: Task[];
+}
 
+export default function TaskTableAccordion({
+  status,
+  tasks,
+}: TaskTableAccordionProps) {
   return (
     <Accordion defaultOpen>
       {({ open }) => (
@@ -33,7 +35,7 @@ export default function TaskTableAccordion({ status }: { status: Status }) {
               <p className="font-semibold capitalize text-ravn-neutral-1 text-body-l-bold">
                 {normalizeText(status)}
                 <span className="text-ravn-ravn-bg-ravn-neutral-2 pl-2">
-                  ({zeroPad(data?.tasks?.length ?? 0)})
+                  ({zeroPad(tasks?.length ?? 0)})
                 </span>
               </p>
             </AccordionButton>
@@ -51,7 +53,7 @@ export default function TaskTableAccordion({ status }: { status: Status }) {
           <AccordionPanel className="-mt-4 flex h-max min-h-14 w-full flex-col items-center justify-center overflow-hidden bg-ravn-neutral-4 text-ravn-neutral-1">
             <table className="flex h-full w-full flex-col items-start justify-start overflow-x-auto">
               <tbody className="flex min-h-14 w-full flex-col items-center justify-between">
-                {data?.tasks?.map((task: Task) => (
+                {tasks?.map((task: Task) => (
                   <TaskTableColumn key={task.id} task={task} />
                 ))}
               </tbody>

@@ -7,4 +7,9 @@ export const client = new ApolloClient({
     Authorization: `Bearer ${VITE_GRAPHQL_RAVN_API_KEY}`,
   },
   cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: "cache-first",
+    },
+  },
 });
