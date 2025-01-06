@@ -1,5 +1,0 @@
-query GetTasksStatus($input: FilterTaskInput!) {
-  tasks(input: $input) {
-    status
-  }
-}
