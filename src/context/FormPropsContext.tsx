@@ -21,10 +21,7 @@ export const FormPropsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data } = useGetUsersQuery({
-    notifyOnNetworkStatusChange: true,
-    fetchPolicy: "cache-and-network",
-  });
+  const { data } = useGetUsersQuery();
 
   const contextValue = useMemo(() => {
     return {

@@ -12,7 +12,6 @@ export default function useFilteredTasks() {
 
   const { data, loading } = useGetTasksQuery({
     variables: { input: {} },
-    notifyOnNetworkStatusChange: true,
   });
 
   const filteredTasks = isMyTasksRoute

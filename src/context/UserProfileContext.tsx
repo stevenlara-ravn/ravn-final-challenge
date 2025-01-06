@@ -1,8 +1,12 @@
 import { useProfileQuery, User } from "@/gql/graphql";
 import { createContext, useMemo } from "react";
 
+interface ExtendedUser extends User {
+  avatar: string;
+}
+
 interface UserProfileContextType {
-  profileData?: User;
+  profileData?: ExtendedUser;
 }
 
 export const UserProfileContext = createContext<UserProfileContextType>({
@@ -18,7 +22,10 @@ export const UserProfileProvider = ({
 
   const contextValue = useMemo(
     () => ({
-      profileData: data?.profile,
+      profileData: {
+        ...(data?.profile || ({} as User)),
+        avatar: "https://avatars.githubusercontent.com/u/188256588?v=4",
+      },
     }),
     [data],
   );

@@ -10,6 +10,7 @@ export const client = new ApolloClient({
   defaultOptions: {
     watchQuery: {
       fetchPolicy: "cache-first",
+      notifyOnNetworkStatusChange: true,
     },
   },
 });
