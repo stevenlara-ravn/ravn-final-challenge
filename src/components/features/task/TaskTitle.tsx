@@ -1,5 +1,6 @@
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
+import DOMPurify from "dompurify";
 import { useFormContext } from "react-hook-form";
 
 export default function TaskTitle() {
@@ -12,14 +13,17 @@ export default function TaskTitle() {
   } = useFormContext<TaskInputs>();
   const name = watch("name", currentTask?.name);
 
+  const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const sanitizedNote = DOMPurify.sanitize(e.target.value);
+    setValue("name", sanitizedNote, { shouldValidate: true });
+  };
+
   return (
     <div className="flex w-full flex-col items-start justify-between">
       <input
         autoFocus={false}
         className="h-8 w-full bg-ravn-neutral-3 outline-none text-body-xl-bold placeholder:text-ravn-neutral-2"
-        onChange={(e) =>
-          setValue("name", e.target.value, { shouldValidate: true })
-        }
+        onChange={handleOnChangeInput}
         placeholder="Task Title"
         type="text"
         value={name}
