@@ -1,6 +1,5 @@
-import MoreIcon from "@/assets/icons/more.svg?react";
 import Avatar from "@/components/core/design-system/Avatar";
-import Button from "@/components/core/design-system/Button";
+import DropDownMenu from "@/components/core/design-system/DropdownMenu";
 import TechTag from "@/components/core/TechTag";
 import TimerTag from "@/components/core/TimerTag";
 import TaskCardAction from "@/components/features/task/TaskCardAction";
@@ -17,9 +16,8 @@ export default function TaskCard({ task }: TaskCardProps) {
     <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
       <div className="flex w-full items-center justify-between">
         <p className="text-ravn-neutral-1 text-body-l-bold">{task.name}</p>
-        <Button className="h-6 w-6" type="button">
-          <MoreIcon className="text-ravn-neutral-2" />
-        </Button>
+
+        <DropDownMenu task={task} />
       </div>
 
       <div className="flex w-full items-center justify-between">
