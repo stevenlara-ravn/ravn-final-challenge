@@ -12,7 +12,12 @@ export default function Navigation() {
     <nav className="mt-[60px] flex w-full flex-col">
       <ul className="flex flex-col items-center justify-center gap-4">
         {routes.map((route) => (
-          <SidebarTab key={route.label} {...route} />
+          <SidebarTab
+            icon={route.icon}
+            key={route.label}
+            label={route.label}
+            url={route.url}
+          />
         ))}
       </ul>
     </nav>
