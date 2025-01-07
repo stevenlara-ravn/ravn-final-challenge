@@ -24,11 +24,11 @@ const ComboItem = forwardRef<HTMLDivElement, ComboItemProps>(
         {selectIcon && <Select.Icon>{selectIcon}</Select.Icon>}
         <Select.ItemText
           className={cn(
-            "flex items-center justify-between self-end text-ravn-neutral-5 text-body-m-regular",
+            "flex items-center justify-between self-end text-ravn-neutral-1 text-body-m-regular",
             itemTextClassName,
           )}
         >
-          {children}
+          <p className="text-ravn-neutral-1">{children}</p>
         </Select.ItemText>
       </Select.Item>
     );
