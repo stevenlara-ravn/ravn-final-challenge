@@ -1,5 +1,5 @@
 import TaskFormActions from "@/components/features/task/TaskFormActions";
-import useDeleteTask from "@/hooks/task-actions/useDeleteTask";
+import useDeleteTask from "@/hooks/api/task-actions/useDeleteTask";
 import { useFormState } from "@/stores/form-state";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 

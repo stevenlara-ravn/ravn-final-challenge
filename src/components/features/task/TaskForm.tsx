@@ -1,7 +1,7 @@
 import TaskFormActions from "@/components/features/task/TaskFormActions";
 import TaskFormFields from "@/components/features/task/TaskFormFields";
-import useCreateTask from "@/hooks/task-actions/useCreateTask";
-import useUpdateTask from "@/hooks/task-actions/useUpdateTask";
+import useCreateTask from "@/hooks/api/task-actions/useCreateTask";
+import useUpdateTask from "@/hooks/api/task-actions/useUpdateTask";
 import { taskSchema } from "@/schemas/task";
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
