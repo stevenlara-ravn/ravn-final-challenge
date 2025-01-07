@@ -19,5 +19,3 @@ export const useFormState = create<FormState>((set) => ({
   setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) =>
     set({ isDeleteTaskModalOpen }),
 }));
-
-console.log(useFormState.getState().currentTask);

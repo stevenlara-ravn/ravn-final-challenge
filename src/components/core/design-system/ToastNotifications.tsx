@@ -38,8 +38,6 @@ const icons = {
 };
 
 const Toast = ({ message, type }: ToastProps) => {
-  console.log(toasterColors[type]);
-
   return (
     <div
       className={cn(
