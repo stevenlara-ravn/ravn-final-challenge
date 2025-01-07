@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <UserProfileProvider>
-      <Toaster richColors />
+      <Toaster />
       <Router />
     </UserProfileProvider>
   </ApolloProvider>,

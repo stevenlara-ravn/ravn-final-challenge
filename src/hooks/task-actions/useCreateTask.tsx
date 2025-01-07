@@ -1,6 +1,9 @@
+import {
+  errorToast,
+  successToast,
+} from "@/components/core/design-system/ToastNotifications";
 import { Status, useCreateTaskMutation } from "@/gql/graphql";
 import { TaskInputs } from "@/types/Task";
-import { toast } from "sonner";
 
 export default function useCreateTask(onSuccess: () => void) {
   const [createTaskMutation, { loading, error }] = useCreateTaskMutation({
@@ -32,11 +35,11 @@ export default function useCreateTask(onSuccess: () => void) {
         },
       },
       onCompleted: () => {
-        toast.success("Task created successfully!");
+        successToast("Task created successfully!");
         onSuccess();
       },
       onError: (error) => {
-        toast.error("Oops! Something went wrong.");
+        errorToast("Oops! Something went wrong.");
         console.error(error);
       },
     });

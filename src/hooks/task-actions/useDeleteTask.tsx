@@ -1,6 +1,9 @@
+import {
+  errorToast,
+  successToast,
+} from "@/components/core/design-system/ToastNotifications";
 import { useDeleteTaskMutation } from "@/gql/graphql";
 import { Reference } from "@apollo/client";
-import { toast } from "sonner";
 
 export default function useDeleteTask(onSuccess: () => void) {
   const [deleteTaskMutation, { loading, error }] = useDeleteTaskMutation({
@@ -28,11 +31,11 @@ export default function useDeleteTask(onSuccess: () => void) {
         },
       },
       onCompleted: () => {
-        toast.success("Task deleted successfully!");
+        successToast("Task deleted successfully!");
         onSuccess();
       },
       onError: (error) => {
-        toast.error("Oops! Something went wrong.");
+        errorToast("Oops! Something went wrong.");
         console.error(error);
       },
     });

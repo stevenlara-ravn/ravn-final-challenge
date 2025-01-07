@@ -18,18 +18,21 @@ module.exports = {
           2: "#EBA59E",
           3: "#E27D73",
           4: "#DA584B",
+          5: "#3f1410"
         },
         "ravn-secondary": {
           1: "#C8E1BC",
           2: "#AAD199",
           3: "#8DC275",
           4: "#70B252",
+          5: "#14240f"
         },
         "ravn-tertiary": {
           1: "#F9EED7",
           2: "#F2DAAB",
           3: "#EBC77F",
           4: "#E5B454",
+          5: "#3b190d"
         },
         "ravn-blue-1": "#2F61BF"
       },
