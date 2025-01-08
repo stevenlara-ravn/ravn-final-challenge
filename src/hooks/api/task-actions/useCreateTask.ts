@@ -2,7 +2,7 @@ import {
   errorToast,
   successToast,
 } from "@/components/core/design-system/ToastNotifications";
-import { Status, useCreateTaskMutation } from "@/gql/graphql";
+import { Status, Task, useCreateTaskMutation, UserType } from "@/gql/graphql";
 import { TaskInputs } from "@/types/Task";
 
 export default function useCreateTask(onSuccess: () => void) {
@@ -33,6 +33,28 @@ export default function useCreateTask(onSuccess: () => void) {
           status: Status.Todo,
           assigneeId: data.assigneeId,
         },
+      },
+      optimisticResponse: {
+        __typename: "Mutation",
+        createTask: {
+          __typename: "Task",
+          name: data.name ?? "",
+          dueDate: new Date(data.dueDate).toISOString(),
+          pointEstimate: data.pointEstimate,
+          tags: data.tags ?? [],
+          assignee: {
+            __typename: "User",
+            id: data.assigneeId ?? "",
+            avatar: "",
+            createdAt: "",
+            email: "",
+            updatedAt: "",
+            fullName: "",
+            type: UserType.Candidate,
+          },
+          status: Status.Todo,
+          position: data.position ?? 1,
+        } as Task,
       },
       onCompleted: () => {
         successToast("Task created successfully!");

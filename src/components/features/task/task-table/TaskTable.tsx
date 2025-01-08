@@ -4,18 +4,18 @@ import TaskTableHeader from "@/components/features/task/task-table/TaskTableHead
 import useFilteredTasks from "@/hooks/useFilteredTasks";
 
 const RenderTaskTableAccordions = () => {
-  const { groupByStatus, loading, statuses } = useFilteredTasks();
+  const { groupedByStatus, loading, createdStatuses } = useFilteredTasks();
 
   return loading ? (
     <TaskTableSkeleton />
   ) : (
-    statuses.length >= 1 &&
-      groupByStatus &&
-      statuses.map((status) => (
+    createdStatuses.length >= 1 &&
+      groupedByStatus &&
+      createdStatuses.map((status) => (
         <TaskTableAccordion
           key={status}
           status={status}
-          tasks={groupByStatus[status]}
+          tasks={groupedByStatus[status]}
         />
       ))
   );

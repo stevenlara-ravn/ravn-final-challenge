@@ -3,7 +3,7 @@ import { Task } from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
 import useTasks from "@/hooks/api/useTasks";
 import { useTaskSearchState } from "@/stores/task-search-state";
-import { groupBy } from "@/utils/array";
+import { groupBy, sortBy } from "@/utils/array";
 import { useContext } from "react";
 import { useLocation } from "react-router";
 
@@ -78,13 +78,21 @@ export default function useFilteredTasks() {
     });
   }
 
-  const statuses = [...new Set(filteredTasks?.map((task) => task.status))];
+  filteredTasks = sortBy<Task>(
+    filteredTasks ?? [],
+    (task) => task.position,
+    "asc",
+  );
 
-  const groupByStatus = groupBy(filteredTasks ?? [], (task) => task.status);
+  const createdStatuses = [
+    ...new Set(filteredTasks?.map((task) => task.status)),
+  ];
+
+  const groupedByStatus = groupBy(filteredTasks ?? [], (task) => task.status);
 
   return {
-    statuses,
-    groupByStatus,
+    createdStatuses,
+    groupedByStatus,
     loading,
   };
 }

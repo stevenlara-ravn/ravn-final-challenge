@@ -3,6 +3,7 @@ import { Task, useGetTasksQuery } from "@/gql/graphql";
 interface TasksResponse {
   tasks: Task[] | undefined;
   loading: boolean;
+  count: number | undefined;
 }
 
 export default function useTasks(): TasksResponse {
@@ -47,5 +48,6 @@ export default function useTasks(): TasksResponse {
   return {
     tasks: mappedTasks,
     loading,
+    count: data?.tasks.length,
   };
 }

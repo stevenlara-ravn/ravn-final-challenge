@@ -2,6 +2,7 @@ import TaskFormActions from "@/components/features/task/TaskFormActions";
 import TaskFormFields from "@/components/features/task/TaskFormFields";
 import useCreateTask from "@/hooks/api/task-actions/useCreateTask";
 import useUpdateTask from "@/hooks/api/task-actions/useUpdateTask";
+import useTasks from "@/hooks/api/useTasks";
 import { taskSchema } from "@/schemas/task";
 import { useFormState } from "@/stores/form-state";
 import { TaskInputs } from "@/types/Task";
@@ -14,6 +15,7 @@ interface TaskFormProps {
 
 export default function TaskForm({ setOpen }: TaskFormProps) {
   const { currentTask, setCurrentTask } = useFormState((state) => state);
+  const { count } = useTasks();
 
   const methods = useForm<TaskInputs>({
     resolver: zodResolver(taskSchema),
@@ -30,6 +32,8 @@ export default function TaskForm({ setOpen }: TaskFormProps) {
       : {
           name: "",
           tags: [],
+          assigneeId: "",
+          position: count ? count + 1 : 1,
           dueDate: new Date().toISOString(),
         },
   });
@@ -48,7 +52,7 @@ export default function TaskForm({ setOpen }: TaskFormProps) {
   });
 
   const onSubmit = async (data: TaskInputs) => {
-    if (currentTask) {
+    if (currentTask?.id) {
       await updateTask(currentTask.id, data);
     } else {
       await createTask(data);

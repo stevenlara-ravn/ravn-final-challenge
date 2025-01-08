@@ -4,12 +4,15 @@ import { client } from "@/services/apollo";
 import { ApolloProvider } from "@apollo/client";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "sonner";
+import { FormPropsProvider } from "./context/FormPropsContext";
 
 createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <UserProfileProvider>
-      <Toaster />
-      <Router />
+      <FormPropsProvider>
+        <Toaster />
+        <Router />
+      </FormPropsProvider>
     </UserProfileProvider>
   </ApolloProvider>,
 );

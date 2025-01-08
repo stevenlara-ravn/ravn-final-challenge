@@ -1,4 +1,10 @@
-import { PointEstimate, TaskTag, useGetUsersQuery, User } from "@/gql/graphql";
+import {
+  PointEstimate,
+  Status,
+  TaskTag,
+  useGetUsersQuery,
+  User,
+} from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
 import { createContext, useMemo } from "react";
 
@@ -7,6 +13,7 @@ interface FormPropsContextType {
   pointEstimate: PointEstimate[];
   pointEstimateNumbers: number[];
   tags: TaskTag[];
+  statuses: Status[];
 }
 
 export const FormPropsContext = createContext<FormPropsContextType>({
@@ -14,6 +21,7 @@ export const FormPropsContext = createContext<FormPropsContextType>({
   pointEstimateNumbers: [],
   tags: [],
   users: [],
+  statuses: [],
 });
 
 export const FormPropsProvider = ({
@@ -31,7 +39,8 @@ export const FormPropsProvider = ({
         .map((point) => mappedPointsEstimate(point, "number"))
         .filter((value): value is number => typeof value === "number"),
       tags: Object.values(TaskTag),
-    };
+      statuses: Object.values(Status),
+    } satisfies FormPropsContextType;
   }, [data]);
 
   return (

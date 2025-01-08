@@ -22,3 +22,37 @@ export function groupBy<T>(
     {} as Record<string | number, T[]>,
   );
 }
+
+/**
+ * Generic sortBy function
+ * @param items - Array of items to sort
+ * @param keyExtractor - Callback function to extract the key for sorting
+ * @param order - Sort order ('asc' for ascending, 'desc' for descending, default is 'desc')
+ * @returns Sorted array of items
+ */
+export function sortBy<T>(
+  items: T[],
+  keySelector: (item: T) => string | number | Date,
+  order: "asc" | "desc" = "desc",
+): T[] {
+  return [...items].sort((a, b) => {
+    const keyA = keySelector(a);
+    const keyB = keySelector(b);
+
+    const valueA =
+      keyA instanceof Date
+        ? keyA.getTime()
+        : typeof keyA === "string"
+          ? new Date(keyA).getTime() || Number(keyA) || 0
+          : Number(keyA) || 0;
+
+    const valueB =
+      keyB instanceof Date
+        ? keyB.getTime()
+        : typeof keyB === "string"
+          ? new Date(keyB).getTime() || Number(keyB) || 0
+          : Number(keyB) || 0;
+
+    return order === "asc" ? valueA - valueB : valueB - valueA;
+  });
+}
