@@ -115,7 +115,7 @@ module.exports = {
           "fontWeight": "700",
           "fontFamily": "\"SF Pro Display\", sans-serif"
         },
-        ".text-body-x-regular": {
+        ".text-body-xl-regular": {
           "fontSize": "20px",
           "lineHeight": "32px",
           "letterSpacing": "0.75px",
