@@ -14,7 +14,9 @@ export default function DropDownMenu({ task }: { task: Task }) {
     <Menu>
       <MenuButton as={Fragment}>
         <button
-          className="flex h-6 w-6 items-center justify-center rounded-lg hover:bg-ravn-neutral-3"
+          className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg hover:bg-ravn-neutral-3"
+          onClick={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()}
           type="button"
         >
           <MoreIcon className="text-ravn-neutral-2" />
@@ -29,10 +31,12 @@ export default function DropDownMenu({ task }: { task: Task }) {
         <MenuItem>
           <button
             className="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 data-[focus]:bg-white/10"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setCurrentTask(task);
               setIsFormOpen(true);
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             type="button"
           >
             <EditIcon />
@@ -42,10 +46,12 @@ export default function DropDownMenu({ task }: { task: Task }) {
         <MenuItem>
           <button
             className="flex w-full items-center gap-2 rounded-lg px-3 py-1.5 data-[focus]:bg-white/10"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setCurrentTask(task);
               setIsDeleteTaskModalOpen(true);
             }}
+            onPointerDown={(e) => e.stopPropagation()}
             type="button"
           >
             <DeleteIcon />

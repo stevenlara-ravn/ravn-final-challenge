@@ -173,6 +173,9 @@ module.exports = {
         },
         ".no-scrollbar::-webkit-scrollbar": {
           "display": "none"
+        },
+        ".touch-none": {
+          "touchAction": "none"
         }
       });
     }

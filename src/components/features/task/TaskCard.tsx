@@ -6,14 +6,46 @@ import TaskCardAction from "@/components/features/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
 import { Task, TaskTag } from "@/gql/graphql";
 import { formatDate } from "@/lib/date";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface TaskCardProps {
   task: Task;
 }
 
 export default function TaskCard({ task }: TaskCardProps) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: task.id,
+    data: {
+      component: "TaskCard",
+      name: task.name,
+      position: task.position,
+      status: task.status,
+    },
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 1000 : 0,
+    opacity: isDragging ? 0.8 : 1,
+  };
+
   return (
-    <article className="h-min-[208px] flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1">
+    <article
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="h-min-[208px] flex h-full w-full cursor-grab touch-none flex-col items-center justify-center gap-4 rounded-lg bg-ravn-neutral-4 p-4 text-ravn-neutral-1 active:cursor-grabbing"
+    >
       <div className="flex h-8 w-full items-center justify-between">
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-ravn-neutral-1 text-body-l-bold">
           {task.name}
