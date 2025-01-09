@@ -92,8 +92,8 @@ Ravn Task Manager is built with the following technologies:
 
 ## Application Screenshots
 
-<img src="./public/assets/img/screenshots/screenshot-1.avif" alt="screenshot-1" width="350">
-<img src="./public/assets/img/screenshots/screenshot-2.avif" alt="screenshot-2" width="350">
+<img src="./public/assets/img/screenshots/screenshot-1.avif" alt="screenshot-1">
+<img src="./public/assets/img/screenshots/screenshot-2.avif" alt="screenshot-2">
 
 ## Application Architecture
 
