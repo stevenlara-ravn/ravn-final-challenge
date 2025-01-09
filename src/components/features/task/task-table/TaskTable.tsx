@@ -1,21 +1,24 @@
 import TaskTableSkeleton from "@/components/core/skeletons/TaskTableSkeleton";
 import TaskTableAccordion from "@/components/features/task/task-table/TaskTableAccordion";
 import TaskTableHeader from "@/components/features/task/task-table/TaskTableHeader";
+import { FormPropsContext } from "@/context/FormPropsContext";
 import useFilteredTasks from "@/hooks/useFilteredTasks";
+import { useContext } from "react";
 
 const RenderTaskTableAccordions = () => {
-  const { groupedByStatus, loading, createdStatuses } = useFilteredTasks();
+  const { groupedByStatus, loading } = useFilteredTasks();
+  const { statuses } = useContext(FormPropsContext);
 
   return loading ? (
     <TaskTableSkeleton />
   ) : (
-    createdStatuses.length >= 1 &&
+    statuses.length > 0 &&
       groupedByStatus &&
-      createdStatuses.map((status) => (
+      statuses.map((status) => (
         <TaskTableAccordion
           key={status}
           status={status}
-          tasks={groupedByStatus[status]}
+          tasks={groupedByStatus[status] ?? []}
         />
       ))
   );

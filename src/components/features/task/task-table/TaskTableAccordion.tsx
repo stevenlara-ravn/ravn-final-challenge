@@ -1,6 +1,7 @@
 import DownArrowIcon from "@/assets/icons/down-arrow.svg?react";
 import MoreIcon from "@/assets/icons/more.svg?react";
 import PlusSign from "@/assets/icons/plus-sign.svg?react";
+import { TaskTablePlaceholder } from "@/components/core/Placeholder";
 import TaskTableColumn from "@/components/features/task/task-table/TaskTableColumn";
 import { Status, Task } from "@/gql/graphql";
 import { cn } from "@/utils/cn";
@@ -53,9 +54,13 @@ export default function TaskTableAccordion({
           <AccordionPanel className="-mt-4 flex h-max min-h-14 w-full flex-col items-center justify-center overflow-hidden bg-ravn-neutral-4 text-ravn-neutral-1">
             <table className="flex h-full w-full flex-col items-start justify-start overflow-x-auto">
               <tbody className="flex min-h-14 w-full flex-col items-center justify-between">
-                {tasks?.map((task: Task) => (
-                  <TaskTableColumn key={task.id} task={task} />
-                ))}
+                {tasks.length === 0 ? (
+                  <TaskTablePlaceholder />
+                ) : (
+                  tasks?.map((task: Task) => (
+                    <TaskTableColumn key={task.id} task={task} />
+                  ))
+                )}
               </tbody>
             </table>
           </AccordionPanel>

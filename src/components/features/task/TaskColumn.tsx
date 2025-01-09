@@ -1,4 +1,4 @@
-import TaskCardPlaceholder from "@/components/core/TaskCardPlaceholder";
+import { TaskCardPlaceholder } from "@/components/core/Placeholder";
 import TaskCard from "@/components/features/task/TaskCard";
 import { Status, Task } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";

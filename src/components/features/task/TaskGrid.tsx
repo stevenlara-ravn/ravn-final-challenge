@@ -33,7 +33,7 @@ const RenderTaskColumns = ({
         <TaskColumn
           key={status}
           status={status}
-          tasks={groupedByStatus[status] ? groupedByStatus[status] : []}
+          tasks={groupedByStatus[status] ?? []}
         />
       </SortableContext>
     ))
