@@ -1,4 +1,4 @@
-import TaskGridSkeleton from "@/components/core/TaskGridSkeleton";
+import TaskGridSkeleton from "@/components/core/skeletons/TaskGridSkeleton";
 import TaskCard from "@/components/features/task/TaskCard";
 import TaskColumn from "@/components/features/task/TaskColumn";
 import { FormPropsContext } from "@/context/FormPropsContext";

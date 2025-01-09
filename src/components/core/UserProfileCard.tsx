@@ -1,4 +1,4 @@
-import UserProfileCardSkeleton from "@/components/core/UserProfileCardSkeleton";
+import UserProfileCardSkeleton from "@/components/core/skeletons/UserProfileCardSkeleton";
 import { ExtendedUser, UserProfileContext } from "@/context/UserProfileContext";
 import { Tilt } from "@jdion/tilt-react";
 import { useContext } from "react";

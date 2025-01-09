@@ -1,4 +1,4 @@
-import TaskTableSkeleton from "@/components/core/TaskTableSkeleton";
+import TaskTableSkeleton from "@/components/core/skeletons/TaskTableSkeleton";
 import TaskTableAccordion from "@/components/features/task/task-table/TaskTableAccordion";
 import TaskTableHeader from "@/components/features/task/task-table/TaskTableHeader";
 import useFilteredTasks from "@/hooks/useFilteredTasks";
