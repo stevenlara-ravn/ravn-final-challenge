@@ -9,7 +9,10 @@ export default function Avatar({ url, ...props }: AvatarProps) {
   return (
     <img
       alt="Avatar"
-      className={cn("min-h-8 min-w-8 rounded-full", props.className)}
+      className={cn(
+        "aspect-square min-h-8 min-w-8 rounded-full",
+        props.className,
+      )}
       src={url ?? "https://i.pravatar.cc/32"}
     />
   );
