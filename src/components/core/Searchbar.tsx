@@ -39,14 +39,14 @@ export default function Searchbar() {
   };
 
   return (
-    <div className="relative flex h-full w-full items-center justify-between">
+    <div className="relative z-0 flex h-full w-full items-center justify-between">
       <SearchIcon className="absolute left-6 h-6 w-6 text-ravn-neutral-2" />
 
       <input
         className="h-full w-full rounded-2xl bg-ravn-neutral-4 py-5 pl-[72px] pr-7 text-ravn-neutral-2 text-body-m-regular placeholder:text-ravn-neutral-2 focus:outline-none"
         onChange={handleOnChange}
         placeholder="Search"
-        ref={inputRef} // Attach the ref to the input element
+        ref={inputRef}
         type="search"
       />
 

@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 export default function AppLayout() {
   return (
-    <main className="flex h-screen w-full items-center justify-between gap-8 bg-ravn-neutral-5 p-8">
+    <main className="flex h-screen w-full items-center justify-between gap-8 bg-ravn-neutral-5 p-6 px-4 md:p-8">
       <MasterSidebar />
 
       <Outlet />

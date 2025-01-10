@@ -10,7 +10,7 @@ export default function TaskFormModal() {
     <Dialog.Root open={isFormOpen}>
       <Dialog.Portal>
         <Dialog.Overlay
-          className="fixed inset-0 z-[2] bg-black/10 backdrop-blur-sm"
+          className="fixed inset-0 z-[3] bg-black/10 backdrop-blur-sm"
           onClick={() => setIsFormOpen(false)}
         />
         <VisuallyHidden.Root>
@@ -19,7 +19,7 @@ export default function TaskFormModal() {
         </VisuallyHidden.Root>
 
         <Dialog.Content
-          className="fixed left-1/2 top-1/2 z-20 min-h-[184px] w-full max-w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-ravn-neutral-3 p-4 text-ravn-neutral-1"
+          className="fixed left-1/2 top-1/2 z-30 flex min-h-[184px] w-full max-w-[700px] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-lg bg-ravn-neutral-3 p-4 text-ravn-neutral-1 md:flex-none"
           id="task-modal-content"
         >
           <TaskForm setOpen={setIsFormOpen} />

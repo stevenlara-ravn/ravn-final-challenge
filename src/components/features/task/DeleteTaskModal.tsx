@@ -27,7 +27,7 @@ export default function DeleteTaskModal() {
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="fixed inset-0 z-[2] bg-black/10 backdrop-blur-sm" />
 
-        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-20 flex h-[184px] w-full max-w-[578px] -translate-x-1/2 -translate-y-1/2 flex-col items-start justify-between rounded-lg bg-ravn-neutral-3 p-4 text-ravn-neutral-1">
+        <AlertDialog.Content className="fixed left-1/2 top-1/2 z-20 flex h-1/4 w-full max-w-[578px] -translate-x-1/2 -translate-y-1/2 flex-col items-start justify-between overflow-hidden rounded-lg bg-ravn-neutral-3 p-4 text-ravn-neutral-1 md:h-[184px]">
           <AlertDialog.Title className="text-ravn-neutral-1 text-body-xl-bold">
             Are you sure you want to delete this task?
           </AlertDialog.Title>
