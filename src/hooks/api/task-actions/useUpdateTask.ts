@@ -3,8 +3,8 @@ import {
   successToast,
 } from "@/components/core/design-system/ToastNotifications";
 import {
+  PointEstimate,
   Status,
-  Task,
   UpdateTaskInput,
   UserType,
   useUpdateTaskMutation,
@@ -34,7 +34,7 @@ export default function useUpdateTask(onSuccess: () => void) {
           id,
           name: data.name ?? "",
           dueDate: new Date(data.dueDate).toISOString(),
-          pointEstimate: data.pointEstimate,
+          pointEstimate: data.pointEstimate ?? PointEstimate.Zero,
           tags: data.tags ?? [],
           creator: {
             __typename: "User",
@@ -54,12 +54,12 @@ export default function useUpdateTask(onSuccess: () => void) {
             email: "",
             createdAt: "",
             updatedAt: "",
-            fullName: "",
+            fullName: "Saving...",
             type: UserType.Candidate,
           },
           status: data.status ?? Status.Todo,
           position: data.position ?? 1,
-        } as Task,
+        },
       },
       update: (cache, { data }) => {
         if (!data?.updateTask) return;

@@ -21,14 +21,28 @@ export default function AssigneeCombo() {
   } = useFormContext<TaskInputs>();
   const assignee = watch("assigneeId", currentTask?.assignee?.id);
 
+  const handleAssigneeIcon = () => {
+    if (!assignee) return <AssigneeIcon />;
+    const currentSelectedUser = users?.filter((user) => user.id === assignee);
+    return (
+      currentSelectedUser?.length === 1 && (
+        <Avatar className="h-6 w-6" url={currentSelectedUser[0].avatar} />
+      )
+    );
+  };
+
   return (
     <Combo
-      className={cn(errors.assigneeId && "bg-ravn-primary-3")}
+      className={cn(
+        errors.assigneeId && "bg-ravn-primary-3",
+        assignee && "bg-transparent",
+        "h-full w-[900px] overflow-hidden",
+      )}
       contentClassName="w-[239px]"
       onValueChange={(value) =>
         setValue("assigneeId", value, { shouldValidate: true })
       }
-      optionIcon={<AssigneeIcon />}
+      optionIcon={handleAssigneeIcon()}
       placeholder="Assignee"
       value={assignee}
     >
@@ -41,7 +55,7 @@ export default function AssigneeCombo() {
           <ComboItem
             className="py-3"
             key={user.id}
-            selectIcon={<Avatar url={user.avatar} />}
+            selectIcon={<Avatar className="h-8 w-8" url={user.avatar} />}
             value={user.id}
           >
             {user.fullName}

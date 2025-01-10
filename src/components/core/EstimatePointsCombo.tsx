@@ -24,7 +24,10 @@ export default function EstimateCombo() {
 
   return (
     <Combo
-      className={cn(errors.pointEstimate && "bg-ravn-primary-3")}
+      className={cn(
+        errors.pointEstimate && "bg-ravn-primary-3",
+        pointEstimate && "bg-transparent",
+      )}
       onValueChange={(value) =>
         setValue("pointEstimate", value as PointEstimate, {
           shouldValidate: true,

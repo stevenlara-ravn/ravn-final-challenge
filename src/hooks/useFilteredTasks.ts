@@ -7,7 +7,7 @@ import {
 } from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
 import { useTaskSearchState } from "@/stores/task-search-state";
-import { groupBy } from "@/utils/array";
+import { groupBy, sortBy } from "@/utils/array";
 import { useContext } from "react";
 import { useLocation } from "react-router";
 
@@ -74,7 +74,7 @@ export default function useFilteredTasks() {
     new Map(combinedTasks.map((task) => [task.id, task])).values(),
   );
 
-  const sortedTasks = uniqueTasks.sort((a, b) => a.position - b.position);
+  const sortedTasks = sortBy(uniqueTasks, (task) => task.position);
 
   const groupedByStatus = groupBy(sortedTasks, (task) => task.status);
 

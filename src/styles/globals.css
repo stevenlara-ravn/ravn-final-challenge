@@ -64,3 +64,11 @@ h5,
 h6 {
   text-wrap: balance;
 }
+
+button>span>p.text-ravn-neutral-1 {
+  @apply text-body-m-regular;
+  @apply overflow-hidden;
+  @apply whitespace-nowrap;
+  @apply text-ellipsis;
+  @apply max-w-[120px]
+}

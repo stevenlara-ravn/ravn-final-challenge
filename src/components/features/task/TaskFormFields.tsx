@@ -8,7 +8,7 @@ export default function TaskFormFields() {
   return (
     <>
       <TaskTitle />
-      <div className="flex min-h-8 w-full items-center justify-between gap-4">
+      <div className="flex h-8 w-full items-center justify-between gap-4">
         <EstimatePointsCombo />
         <AssigneeCombo />
         <TagCombo />

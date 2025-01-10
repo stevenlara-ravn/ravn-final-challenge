@@ -57,14 +57,14 @@ export default function TagCombo() {
       showPlaceholder={tags.length === 0}
       value=""
     >
-      <Select.Group className="h-full w-full">
+      <Select.Group className="h-full w-full pb-1">
         <Select.Label className="px-4 py-2 text-start text-ravn-neutral-2 text-body-xl-bold">
           Tag Title
         </Select.Label>
 
         {tagsArray.map((tag) => (
           <ComboItem
-            className="uppercase"
+            className="py-1 uppercase"
             key={tag}
             selectIcon={<Checkbox checked={tags.includes(tag)} />}
             value={tag}

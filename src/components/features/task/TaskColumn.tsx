@@ -20,7 +20,7 @@ export default function TaskColumn({ status, tasks }: TaskColumnProps) {
   });
 
   const style = {
-    backgroundColor: isOver ? "#94979a " : "",
+    backgroundColor: isOver ? "#94979a" : "",
     minHeight: "100px",
   };
 

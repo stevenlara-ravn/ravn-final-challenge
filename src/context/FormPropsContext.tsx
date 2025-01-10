@@ -33,7 +33,15 @@ export const FormPropsProvider = ({
 
   const contextValue = useMemo(() => {
     return {
-      users: data?.users,
+      users:
+        data?.users.map((user) =>
+          user.id === "913c8486-2fc1-43be-89fe-041f2c1b8af3"
+            ? {
+                ...user,
+                avatar: "https://avatars.githubusercontent.com/u/188256588?v=4",
+              }
+            : user,
+        ) ?? [],
       pointEstimate: Object.values(PointEstimate),
       pointEstimateNumbers: Object.values(PointEstimate)
         .map((point) => mappedPointsEstimate(point, "number"))

@@ -15,7 +15,7 @@ export default function TaskView({
   const { viewMode, handleToggle } = useToggleViewMode(defaultViewMode);
 
   return (
-    <section className="flex h-full w-full flex-col items-center justify-center gap-4">
+    <section className="flex h-full w-full flex-col items-center justify-start gap-4 overflow-hidden">
       <div className="flex h-12 w-full items-center justify-between">
         <ToggleViewModeButton onToggle={handleToggle} viewMode={viewMode} />
         <CreateTaskButton />
