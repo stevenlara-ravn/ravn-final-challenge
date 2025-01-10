@@ -1,28 +1,41 @@
 import SearchIcon from "@/assets/icons/search-bar/search.svg?react";
 import XCloseIcon from "@/assets/icons/x-close.svg?react";
 import { useTaskSearchState } from "@/stores/task-search-state";
-import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+import { debounce } from "lodash";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function Searchbar() {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [showIcon, setShowIcon] = useState(false);
+
   const { setSearchTerm } = useTaskSearchState();
-  const [localSearchTerm, setLocalSearchTerm] = useState("");
-  const [debouncedSearchTerm] = useDebounce(localSearchTerm, 500);
+
+  const debouncedSearchTerm = useCallback(
+    debounce((text: string) => {
+      setSearchTerm(text);
+    }, 500),
+    [],
+  );
 
   useEffect(() => {
-    setSearchTerm(debouncedSearchTerm);
-
     return () => {
-      setSearchTerm("");
+      debouncedSearchTerm.cancel();
     };
-  }, [debouncedSearchTerm, setSearchTerm]);
+  }, [debouncedSearchTerm]);
 
   const handleReset = () => {
-    setLocalSearchTerm("");
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+    setShowIcon(false);
+    debouncedSearchTerm.cancel();
+    setSearchTerm("");
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalSearchTerm(e.target.value);
+    const value = e.target.value;
+    setShowIcon(value.length > 0);
+    debouncedSearchTerm(value);
   };
 
   return (
@@ -33,15 +46,15 @@ export default function Searchbar() {
         className="h-full w-full rounded-2xl bg-ravn-neutral-4 py-5 pl-[72px] pr-7 text-ravn-neutral-2 text-body-m-regular placeholder:text-ravn-neutral-2 focus:outline-none"
         onChange={handleOnChange}
         placeholder="Search"
+        ref={inputRef} // Attach the ref to the input element
         type="search"
-        value={localSearchTerm}
       />
 
-      {localSearchTerm.length >= 1 && (
+      {showIcon && (
         <button
           className="absolute right-6 h-6 w-6"
           onClick={handleReset}
-          type="reset"
+          type="button"
         >
           <XCloseIcon className="h-full w-full text-ravn-neutral-2" />
         </button>

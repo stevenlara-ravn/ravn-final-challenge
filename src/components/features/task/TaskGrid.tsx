@@ -41,7 +41,7 @@ const RenderTaskColumns = ({
 };
 
 export default function TaskGrid() {
-  const { loading, groupedByStatus } = useFilteredTasks();
+  const { groupedByStatus, loading } = useFilteredTasks();
   const { statuses } = useContext(FormPropsContext);
   const { handleDragStart, handleDragEnd, activeTask } = useDraggableHandlers();
 

@@ -46,11 +46,7 @@ export default function useDraggableHandlers() {
         : 1;
 
     await updateTask(activeTask.id, {
-      name: activeTask.name,
-      dueDate: activeTask.dueDate,
-      pointEstimate: activeTask.pointEstimate,
-      tags: activeTask.tags,
-      assigneeId: activeTask.assignee?.id,
+      ...activeTask,
       status: newStatus,
       position: newPosition,
     });

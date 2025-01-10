@@ -17,4 +17,7 @@ export const normalizeText = (text: string) =>
  * @example
  * zeroPad(1) // 01
  */
-export const zeroPad = (number: number) => number.toString().padStart(2, "0");
+export const zeroPad = (number: number) => {
+  if (number === 0) return number.toString();
+  return number.toString().padStart(2, "0");
+};

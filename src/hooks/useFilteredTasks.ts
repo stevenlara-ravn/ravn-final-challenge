@@ -1,98 +1,90 @@
 import { UserProfileContext } from "@/context/UserProfileContext";
-import { Task } from "@/gql/graphql";
+import {
+  PointEstimate,
+  Status,
+  TaskTag,
+  useGetTasksQuery,
+} from "@/gql/graphql";
 import { mappedPointsEstimate } from "@/helpers/points-estimate";
-import useTasks from "@/hooks/api/useTasks";
 import { useTaskSearchState } from "@/stores/task-search-state";
-import { groupBy, sortBy } from "@/utils/array";
+import { groupBy } from "@/utils/array";
 import { useContext } from "react";
 import { useLocation } from "react-router";
-
-const matchesDateSearch = (
-  taskDate: Date | null,
-  searchTerm: string,
-): boolean => {
-  if (!taskDate || isNaN(taskDate.getTime())) return false;
-
-  const lowerSearchTerm = searchTerm.toLowerCase().trim();
-
-  const year = taskDate.getFullYear().toString();
-  const month = taskDate
-    .toLocaleString("default", { month: "long" })
-    .toLowerCase();
-  const shortMonth = taskDate
-    .toLocaleString("default", { month: "short" })
-    .toLowerCase();
-  const isoDate = taskDate.toISOString().split("T")[0];
-
-  const parsedSearchDate = new Date(searchTerm);
-  const isValidParsedDate = !isNaN(parsedSearchDate.getTime());
-
-  return (
-    isoDate === lowerSearchTerm ||
-    year === lowerSearchTerm ||
-    month.includes(lowerSearchTerm) ||
-    shortMonth.includes(lowerSearchTerm) ||
-    (isValidParsedDate &&
-      parsedSearchDate.toISOString().split("T")[0] === isoDate)
-  );
-};
-
-const matchesTextSearch = (task: Task, searchTerm: string): boolean => {
-  const lowerCaseSearchTerm = searchTerm.toLowerCase();
-
-  return (
-    task.name?.toLowerCase().includes(lowerCaseSearchTerm) ||
-    task.tags?.some((tag: string) =>
-      tag.toLowerCase().includes(lowerCaseSearchTerm),
-    ) ||
-    task.assignee?.fullName?.toLowerCase().includes(lowerCaseSearchTerm) ||
-    task.status?.toLowerCase().includes(lowerCaseSearchTerm) ||
-    mappedPointsEstimate(task.pointEstimate, "number")
-      ?.toString()
-      .includes(lowerCaseSearchTerm)
-  );
-};
 
 export default function useFilteredTasks() {
   const { profileData } = useContext(UserProfileContext);
   const location = useLocation();
-  const searchTerm = useTaskSearchState((state) => state.searchTerm);
-
-  const { tasks, loading } = useTasks();
+  const { searchTerm } = useTaskSearchState((state) => state);
 
   const isMyTasksRoute = location.pathname === "/my-tasks";
-  const assigneeId = isMyTasksRoute ? profileData?.id : null;
 
-  let filteredTasks = isMyTasksRoute
-    ? tasks?.filter((task) => task.assignee?.id === assigneeId)
-    : tasks;
+  const { data: allTasks, loading: loadingAllTasks } = useGetTasksQuery({
+    variables: {
+      input: {
+        ...(isMyTasksRoute && { assigneeId: profileData?.id }),
+      },
+    },
+  });
 
-  if (searchTerm) {
-    filteredTasks = filteredTasks?.filter((task) => {
-      const taskDate = task.dueDate ? new Date(task.dueDate) : null;
+  const { data: nameData, loading: loadingNameData } = useGetTasksQuery({
+    variables: { input: { name: searchTerm } },
+    skip: !searchTerm || !searchTerm.length,
+  });
 
-      return (
-        matchesTextSearch(task, searchTerm) ||
-        matchesDateSearch(taskDate, searchTerm)
-      );
+  const { data: tagData, loading: loadingTagData } = useGetTasksQuery({
+    variables: {
+      input: {
+        tags: [searchTerm.toUpperCase() as TaskTag],
+      },
+    },
+    skip:
+      !searchTerm ||
+      !Object.values(TaskTag).includes(searchTerm.toUpperCase() as TaskTag),
+  });
+
+  const { data: statusData, loading: loadingStatusData } = useGetTasksQuery({
+    variables: { input: { status: searchTerm.toUpperCase() as Status } },
+    skip:
+      !searchTerm ||
+      !Object.values(Status).includes(searchTerm.toUpperCase() as Status),
+  });
+
+  const { data: pointEstimateData, loading: loadingPointEstimateData } =
+    useGetTasksQuery({
+      variables: {
+        input: {
+          pointEstimate: mappedPointsEstimate(
+            Number(searchTerm),
+            "string",
+          ) as PointEstimate,
+        },
+      },
+      skip: !searchTerm || (!Number(searchTerm) && !(Number(searchTerm) === 0)),
     });
-  }
 
-  filteredTasks = sortBy<Task>(
-    filteredTasks ?? [],
-    (task) => task.position,
-    "asc",
-  );
-
-  const createdStatuses = [
-    ...new Set(filteredTasks?.map((task) => task.status)),
+  const combinedTasks = [
+    ...((!searchTerm && allTasks?.tasks) || []),
+    ...(nameData?.tasks || []),
+    ...(tagData?.tasks || []),
+    ...(statusData?.tasks || []),
+    ...(pointEstimateData?.tasks || []),
   ];
 
-  const groupedByStatus = groupBy(filteredTasks ?? [], (task) => task.status);
+  const uniqueTasks = Array.from(
+    new Map(combinedTasks.map((task) => [task.id, task])).values(),
+  );
+
+  const sortedTasks = uniqueTasks.sort((a, b) => a.position - b.position);
+
+  const groupedByStatus = groupBy(sortedTasks, (task) => task.status);
 
   return {
-    createdStatuses,
     groupedByStatus,
-    loading,
+    loading:
+      loadingAllTasks ||
+      loadingNameData ||
+      loadingTagData ||
+      loadingStatusData ||
+      loadingPointEstimateData,
   };
 }
