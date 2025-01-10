@@ -3,6 +3,7 @@ import TaskCard from "@/components/features/task/TaskCard";
 import { Status, Task } from "@/gql/graphql";
 import { normalizeText, zeroPad } from "@/utils/text-transform";
 import { useDroppable } from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
 
 interface TaskColumnProps {
   status: Status;
@@ -19,7 +20,7 @@ export default function TaskColumn({ status, tasks }: TaskColumnProps) {
   });
 
   const style = {
-    backgroundColor: isOver ? "#BA25251A" : "",
+    backgroundColor: isOver ? "#94979a " : "",
     minHeight: "100px",
   };
 
@@ -33,13 +34,15 @@ export default function TaskColumn({ status, tasks }: TaskColumnProps) {
         {normalizeText(status)} ({zeroPad(tasks.length ?? 0)})
       </p>
 
-      <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-6 no-scrollbar">
-        {tasks.length === 0 ? (
-          <TaskCardPlaceholder />
-        ) : (
-          tasks.map((task) => <TaskCard key={task.id} task={task} />)
-        )}
-      </div>
+      <SortableContext items={tasks.map((task) => task.id)}>
+        <div className="flex w-full flex-col items-center justify-start gap-4 overflow-y-auto pb-6 no-scrollbar">
+          {tasks.length === 0 ? (
+            <TaskCardPlaceholder />
+          ) : (
+            tasks.map((task) => <TaskCard key={task.id} task={task} />)
+          )}
+        </div>
+      </SortableContext>
     </section>
   );
 }

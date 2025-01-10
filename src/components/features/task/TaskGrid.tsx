@@ -5,7 +5,7 @@ import { FormPropsContext } from "@/context/FormPropsContext";
 import { Status, Task } from "@/gql/graphql";
 import useDraggableHandlers from "@/hooks/useDraggableHandlers";
 import useFilteredTasks from "@/hooks/useFilteredTasks";
-import { closestCorners, DndContext, DragOverlay } from "@dnd-kit/core";
+import { closestCenter, DndContext, DragOverlay } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { useContext } from "react";
 
@@ -48,7 +48,7 @@ export default function TaskGrid() {
   return (
     <main className="flex h-full w-full items-start justify-start gap-8 overflow-x-auto no-scrollbar">
       <DndContext
-        collisionDetection={closestCorners}
+        collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
         onDragStart={handleDragStart}
       >
