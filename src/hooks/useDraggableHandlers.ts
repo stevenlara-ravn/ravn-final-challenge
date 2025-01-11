@@ -15,7 +15,6 @@ export default function useDraggableHandlers() {
     const task = Object.values(groupedByStatus)
       .flat()
       .find((task) => task.id === active.id);
-    console.log(task);
 
     setActiveTask(task || null);
   };
@@ -23,7 +22,6 @@ export default function useDraggableHandlers() {
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     setActiveTask(null);
-    console.log(active, over);
 
     if (!over || active.id === over.id) return;
 
@@ -50,10 +48,6 @@ export default function useDraggableHandlers() {
       status: newStatus,
       position: newPosition,
     });
-
-    console.log(
-      `Task ${activeTask.name} moved from ${activeTask.status} at position ${activeTask.position} to ${newStatus} at position ${newPosition}`,
-    );
   };
 
   return { handleDragStart, handleDragEnd, activeTask };
