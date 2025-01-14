@@ -2,8 +2,8 @@ import { Task } from "@/gql/graphql";
 import { create } from "zustand";
 
 interface FormState {
-  isFormOpen: boolean;
-  setIsFormOpen: (isFormOpen: boolean) => void;
+  isDialogOpen: boolean;
+  setIsDialogOpen: (isDialogOpen: boolean) => void;
   currentTask?: Task | undefined;
   setCurrentTask: (currentTask?: Task) => void;
   isDeleteTaskModalOpen: boolean;
@@ -11,9 +11,9 @@ interface FormState {
 }
 
 export const useFormState = create<FormState>((set) => ({
-  isFormOpen: false,
+  isDialogOpen: false,
   currentTask: undefined,
-  setIsFormOpen: (isFormOpen: boolean) => set({ isFormOpen }),
+  setIsDialogOpen: (isDialogOpen: boolean) => set({ isDialogOpen }),
   setCurrentTask: (currentTask: Task | undefined) => set({ currentTask }),
   isDeleteTaskModalOpen: false,
   setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) =>

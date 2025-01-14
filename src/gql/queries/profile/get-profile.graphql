@@ -1,4 +1,4 @@
-query Profile {
+query GetProfile {
   profile {
     avatar
     createdAt

@@ -11,14 +11,14 @@ import { useFormState } from "@/stores/form-state";
 import { ViewMode } from "@/types/ViewModeTypes";
 
 const CreateTaskButton = () => {
-  const { setCurrentTask, setIsFormOpen } = useFormState((state) => state);
+  const { setCurrentTask, setIsDialogOpen } = useFormState((state) => state);
 
   return (
     <Button
       className="flex h-10 w-10 items-center justify-center rounded-lg bg-ravn-primary-4 outline-none"
       onClick={() => {
         setCurrentTask();
-        setIsFormOpen(true);
+        setIsDialogOpen(true);
       }}
       type="button"
     >

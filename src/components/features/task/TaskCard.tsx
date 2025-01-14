@@ -31,7 +31,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       status: task.status,
     },
   });
-  const { setIsFormOpen, setCurrentTask, setIsDeleteTaskModalOpen } =
+  const { setIsDialogOpen, setCurrentTask, setIsDeleteTaskModalOpen } =
     useFormState((state) => state);
 
   const style = {
@@ -57,7 +57,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         <TaskDropDownMenuOptions
           setCurrentTask={setCurrentTask}
           setIsDeleteTaskModalOpen={setIsDeleteTaskModalOpen}
-          setIsFormOpen={setIsFormOpen}
+          setIsDialogOpen={setIsDialogOpen}
           task={task}
         />
       </div>

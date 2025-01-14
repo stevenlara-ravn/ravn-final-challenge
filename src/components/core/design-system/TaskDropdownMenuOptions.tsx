@@ -8,14 +8,14 @@ import { Fragment } from "react";
 interface TaskDropDownMenuOptionsProps {
   task: Task;
   setCurrentTask: (task: Task) => void;
-  setIsFormOpen: (isFormOpen: boolean) => void;
+  setIsDialogOpen: (isDialogOpen: boolean) => void;
   setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) => void;
 }
 
 export default function TaskDropDownMenuOptions({
   task,
   setCurrentTask,
-  setIsFormOpen,
+  setIsDialogOpen,
   setIsDeleteTaskModalOpen,
 }: TaskDropDownMenuOptionsProps) {
   return (
@@ -42,7 +42,7 @@ export default function TaskDropDownMenuOptions({
             onClick={(e) => {
               e.stopPropagation();
               setCurrentTask(task);
-              setIsFormOpen(true);
+              setIsDialogOpen(true);
             }}
             onPointerDown={(e) => e.stopPropagation()}
             type="button"
