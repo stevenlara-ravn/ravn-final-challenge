@@ -1,4 +1,4 @@
-import { useProfileQuery, User } from "@/gql/graphql";
+import { useGetProfileQuery, User } from "@/gql/graphql";
 import { createContext, useMemo } from "react";
 
 export interface ExtendedUser extends User {
@@ -20,7 +20,7 @@ export const UserProfileProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data, loading } = useProfileQuery();
+  const { data, loading } = useGetProfileQuery();
 
   const contextValue = useMemo(
     () =>
