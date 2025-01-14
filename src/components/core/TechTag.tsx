@@ -25,17 +25,19 @@ function TechTagItem({
 }
 
 export default function TechTag({ tags }: TechTagProps) {
-  if (!tags || tags.length === 0) return null;
+  if (!tags.length) return null;
 
-  return tags.length === 1 ? (
-    <TechTagItem className={deviceTagColors[tags[0]]} content={tags[0]} />
-  ) : (
+  const [firstTag, ...restTags] = tags;
+
+  return (
     <>
-      <TechTagItem className={deviceTagColors[tags[0]]} content={tags[0]} />
-      <TechTagItem
-        className="bg-ravn-neutral-2/10"
-        content={`+${tags.length - 1}`}
-      />
+      <TechTagItem className={deviceTagColors[firstTag]} content={firstTag} />
+      {restTags.length > 0 && (
+        <TechTagItem
+          className="bg-ravn-neutral-2/10"
+          content={`+${restTags.length}`}
+        />
+      )}
     </>
   );
 }

@@ -14,7 +14,7 @@ const UserProfileCardContent = ({ data }: UserProfileCardProps) => {
           alt="profile-data-image"
           className="aspect-square rounded-t-lg"
           height={400}
-          src={data?.avatar ?? ""}
+          src={data?.avatar ?? "https://i.pravatar.cc/32"}
           width={400}
         />
         <div className="w-full px-5">

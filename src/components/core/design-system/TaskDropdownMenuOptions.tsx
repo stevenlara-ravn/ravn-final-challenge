@@ -2,14 +2,22 @@ import MoreIcon from "@/assets/icons/more.svg?react";
 import EditIcon from "@/assets/icons/pencil.svg?react";
 import DeleteIcon from "@/assets/icons/trash.svg?react";
 import { Task } from "@/gql/graphql";
-import { useFormState } from "@/stores/form-state";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Fragment } from "react";
 
-export default function DropDownMenu({ task }: { task: Task }) {
-  const { setIsFormOpen, setCurrentTask, setIsDeleteTaskModalOpen } =
-    useFormState((state) => state);
+interface TaskDropDownMenuOptionsProps {
+  task: Task;
+  setCurrentTask: (task: Task) => void;
+  setIsFormOpen: (isFormOpen: boolean) => void;
+  setIsDeleteTaskModalOpen: (isDeleteTaskModalOpen: boolean) => void;
+}
 
+export default function TaskDropDownMenuOptions({
+  task,
+  setCurrentTask,
+  setIsFormOpen,
+  setIsDeleteTaskModalOpen,
+}: TaskDropDownMenuOptionsProps) {
   return (
     <Menu>
       <MenuButton as={Fragment}>

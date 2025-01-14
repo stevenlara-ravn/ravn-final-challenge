@@ -2,7 +2,7 @@ import SearchIcon from "@/assets/icons/search-bar/search.svg?react";
 import XCloseIcon from "@/assets/icons/x-close.svg?react";
 import { useTaskSearchState } from "@/stores/task-search-state";
 import { debounce } from "lodash";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Searchbar() {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -10,12 +10,9 @@ export default function Searchbar() {
 
   const { setSearchTerm } = useTaskSearchState();
 
-  const debouncedSearchTerm = useCallback(
-    debounce((text: string) => {
-      setSearchTerm(text);
-    }, 500),
-    [],
-  );
+  const debouncedSearchTerm = debounce((text: string) => {
+    setSearchTerm(text);
+  }, 500);
 
   useEffect(() => {
     return () => {
@@ -33,9 +30,14 @@ export default function Searchbar() {
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setShowIcon(value.length > 0);
-    debouncedSearchTerm(value);
+
+    if (!value) {
+      setSearchTerm("");
+    } else {
+      debouncedSearchTerm(value);
+    }
   };
 
   return (

@@ -64,7 +64,7 @@ export default function TaskForm({ setOpen }: TaskFormProps) {
       >
         <TaskFormFields />
         <TaskFormActions
-          action={currentTask ? "update" : "create"}
+          action={currentTask?.id ? "update" : "create"}
           loading={createLoading || updateLoading}
           setOpen={setOpen}
         />

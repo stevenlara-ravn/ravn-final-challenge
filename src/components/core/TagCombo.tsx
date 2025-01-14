@@ -35,7 +35,7 @@ export default function TagCombo() {
   };
 
   const renderTechTagPlaceholder = (tags: TaskTag[]) => {
-    if (tags.length === 0) return <p>Label</p>;
+    if (!tags.length) return <p>Label</p>;
 
     return (
       <div className="flex gap-2">
@@ -47,6 +47,7 @@ export default function TagCombo() {
   return (
     <Combo
       className={cn(
+        "min-w-[160px]",
         errors.tags && "bg-ravn-primary-3",
         tags.length >= 1 && "bg-transparent",
       )}

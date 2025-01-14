@@ -7,6 +7,7 @@ import TechTags from "@/components/core/TechTag";
 import { statusColors } from "@/constants/colors";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
 import { Task } from "@/gql/graphql";
+import { cn } from "@/utils/cn";
 import { zeroPad } from "@/utils/text-transform";
 
 export default function TaskTableColumn({ task }: { task: Task }) {
@@ -14,7 +15,10 @@ export default function TaskTableColumn({ task }: { task: Task }) {
     <tr className="flex h-full w-full items-center justify-between">
       <td className="group relative flex h-full w-full min-w-[460px] items-center justify-between gap-2 overflow-hidden border-x border-b border-ravn-neutral-3 px-4 py-1">
         <span
-          className={`absolute left-0 h-[80%] w-1 ${statusColors[task.status]}`}
+          className={cn(
+            "absolute left-0 h-[80%] w-1",
+            statusColors[task.status],
+          )}
         />
         <span className="group/drag-n-drop flex h-6 w-6 cursor-move items-center justify-center">
           <DragIcon className="invisible text-ravn-neutral-2 group-hover/drag-n-drop:visible" />

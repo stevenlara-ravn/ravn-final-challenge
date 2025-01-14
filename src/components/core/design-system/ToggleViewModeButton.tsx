@@ -11,15 +11,14 @@ export default function ToggleViewModeButton({
   return (
     <div className="flex h-10 w-20 items-center justify-center">
       <Button
-        className={cn(viewMode === "table" && "border border-ravn-primary-4")}
+        className={cn({ "border border-ravn-primary-4": viewMode === "table" })}
         onClick={() => onToggle("table")}
         type="button"
       >
         <ColumnsIcon
-          className={cn(
-            "text-ravn-neutral-1",
-            viewMode === "table" && "text-ravn-primary-4",
-          )}
+          className={cn("text-ravn-neutral-1", {
+            "text-ravn-primary-4": viewMode === "table",
+          })}
         />
       </Button>
 
@@ -29,10 +28,9 @@ export default function ToggleViewModeButton({
         type="button"
       >
         <GridIcon
-          className={cn(
-            "text-ravn-neutral-1",
-            viewMode === "grid" && "text-ravn-primary-4",
-          )}
+          className={cn("text-ravn-neutral-1", {
+            "text-ravn-primary-4": viewMode === "grid",
+          })}
         />
       </Button>
     </div>

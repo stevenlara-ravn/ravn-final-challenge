@@ -25,7 +25,7 @@ export default function Combo({
     <Select.Root onValueChange={onValueChange} value={value}>
       <Select.Trigger
         className={cn(
-          "inline-flex h-full w-full min-w-[128px] flex-row items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded bg-ravn-neutral-2/10 px-4 py-1",
+          "inline-flex h-full w-full flex-row items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded bg-ravn-neutral-2/10 px-4 py-1",
           className,
         )}
       >

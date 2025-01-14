@@ -1,11 +1,12 @@
 import Avatar from "@/components/core/design-system/Avatar";
-import DropDownMenu from "@/components/core/design-system/DropdownMenu";
+import TaskDropDownMenuOptions from "@/components/core/design-system/TaskDropdownMenuOptions";
 import TechTag from "@/components/core/TechTag";
 import TimerTag from "@/components/core/TimerTag";
 import TaskCardAction from "@/components/features/task/TaskCardAction";
 import { POINTS_ESTIMATE } from "@/constants/points-estimate";
 import { Task, TaskTag } from "@/gql/graphql";
 import { formatDate } from "@/lib/date";
+import { useFormState } from "@/stores/form-state";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -30,6 +31,8 @@ export default function TaskCard({ task }: TaskCardProps) {
       status: task.status,
     },
   });
+  const { setIsFormOpen, setCurrentTask, setIsDeleteTaskModalOpen } =
+    useFormState((state) => state);
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -51,7 +54,12 @@ export default function TaskCard({ task }: TaskCardProps) {
           {task.name}
         </p>
 
-        <DropDownMenu task={task} />
+        <TaskDropDownMenuOptions
+          setCurrentTask={setCurrentTask}
+          setIsDeleteTaskModalOpen={setIsDeleteTaskModalOpen}
+          setIsFormOpen={setIsFormOpen}
+          task={task}
+        />
       </div>
 
       <div className="flex w-full items-center justify-between">

@@ -31,7 +31,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       quotes: ["error", "double"],
-      "no-unused-vars": "off",
+      "no-unused-vars": "warn",
       "prefer-const": "warn",
       "react/prop-types": "off",
       "react/self-closing-comp": [
