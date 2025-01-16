@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SF Pro Display";
+  src:
+    local("SF Pro Display Regular"),
+    local("SFProDisplay-Regular"),
+    url("../assets/fonts/sf-pro-display-regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Compact Display";
+  src:
+    local("SFCompactDisplay-Regular"),
+    local("SFCompactDisplay-Regular"),
+    url("../assets/fonts/SF-Compact-Display-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  @apply no-scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  min-height: 100dvh;
+  overscroll-behavior: none;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+button>span>p.text-ravn-neutral-1 {
+  @apply text-body-m-regular;
+  @apply overflow-hidden;
+  @apply whitespace-nowrap;
+  @apply text-ellipsis;
+  @apply max-w-[120px]
+}

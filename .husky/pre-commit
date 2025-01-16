@@ -1,0 +1,5 @@
+echo "Checking for TypeScript errors..."
+tsc -b
+
+echo "Checking for ESLint errors..."
+pnpm lint --fix
